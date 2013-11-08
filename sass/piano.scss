@@ -28,7 +28,7 @@
       border-top:0.08em solid #696969;
       border-bottom: 0.3em solid black;
       @include background-image(linear-gradient(#eeeeee, #b5b5b5));
-      @include transition(all 0.2s linear);
+//      @include transition(all 0.2s linear);
     }
 
     a {
