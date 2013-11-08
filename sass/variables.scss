@@ -1,0 +1,14 @@
+// Style and Feel
+$bg-color: #e7e7e7;
+
+
+// Piano
+$white-key: #e5e5e5;
+$black-key: #383838;
+$white-key-height: 3em;
+$black-key-height: $white-key-height * .5;
+$black-key-position: -$black-key-height * .5;
+$black-key-high: $black-key-position - 0.2;
+$black-key-low: $black-key-position + 0.2;
+$black-key-outer-border: black;
+$black-key-inner-border: #565656;

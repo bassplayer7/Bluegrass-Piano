@@ -1,0 +1,18 @@
+/* ======== Layouts ======== */
+nav {
+  float:left;
+  width:18%;
+  min-width:2em;
+}
+
+.content {
+  width:50%;
+  float: left;
+  padding:0 10%;
+//  background-color: $bg-color;
+//  opacity: 0.2;
+
+  * {
+    opacity: 1;
+  }
+}
