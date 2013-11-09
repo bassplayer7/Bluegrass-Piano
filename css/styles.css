@@ -1,3 +1,57 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+/* line 18, ../sass/reset.scss */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+/* line 28, ../sass/reset.scss */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+/* line 31, ../sass/reset.scss */
+body {
+  line-height: 1; }
+
+/* line 34, ../sass/reset.scss */
+ol, ul {
+  list-style: none; }
+
+/* line 37, ../sass/reset.scss */
+blockquote, q {
+  quotes: none; }
+
+/* line 41, ../sass/reset.scss */
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+/* line 45, ../sass/reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
 /* ======== Overall Styles ======== */
 /* line 2, ../sass/general.scss */
 * {
@@ -30,18 +84,31 @@ a {
 
 /* line 34, ../sass/general.scss */
 h1 {
-  margin: 3em auto 0;
+  margin: 0.5em auto 0;
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  -ms-transform: rotate(3deg);
+  -o-transform: rotate(3deg);
+  transform: rotate(3deg);
   font-size: 4em;
   font-family: 'Raleway', sans-serif;
   text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.9);
   text-decoration: none; }
 
-/* line 42, ../sass/general.scss */
+/* line 43, ../sass/general.scss */
+h2 {
+  font-size: 3em; }
+
+/* line 47, ../sass/general.scss */
+h3 {
+  font-size: 2em; }
+
+/* line 51, ../sass/general.scss */
 p {
   margin: 0 auto;
   margin-top: 3em; }
 
-/* line 57, ../sass/general.scss */
+/* line 66, ../sass/general.scss */
 .updated {
   font-size: 0.5em;
   margin-top: 6em;
@@ -54,17 +121,21 @@ p {
 /* line 2, ../sass/layouts.scss */
 nav {
   float: left;
-  width: 18%;
+  width: 20%;
   min-width: 2em; }
 
-/* line 8, ../sass/layouts.scss */
+/* line 10, ../sass/layouts.scss */
 .content {
   width: 50%;
   float: left;
-  padding: 0 10%; }
-  /* line 15, ../sass/layouts.scss */
-  .content * {
-    opacity: 1; }
+  padding: 0 10%;
+  margin-left: 5%;
+  min-height: 100%;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.2)), color-stop(100%, rgba(255, 255, 255, 0.3)));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3)); }
 
 /* line 2, ../sass/piano.scss */
 .piano ul {
@@ -72,11 +143,11 @@ nav {
   margin: 0;
   padding: 0; }
 /* line 8, ../sass/piano.scss */
-.piano li {
+.piano li a {
   width: 100%;
-  min-width: 15em;
+  min-width: 11.5em;
   height: 3em;
-  border-bottom: 0.18em solid black;
+  border-bottom: 2px solid black;
   display: block;
   background-color: #e5e5e5;
   position: relative;
@@ -85,53 +156,57 @@ nav {
   text-align: right;
   color: #7b7b7b; }
   /* line 26, ../sass/piano.scss */
-  .piano li:hover {
-    height: 2.8em;
-    border-top: 0.08em solid #696969;
-    border-bottom: 0.3em solid black;
+  .piano li a span {
+    padding: 0.8em 1em 0 0;
+    display: inline-block;
+    text-decoration: none; }
+  /* line 32, ../sass/piano.scss */
+  .piano li a:hover {
+    box-shadow: inset 0px 0px 5px #000000;
     background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #b5b5b5));
     background-image: -webkit-linear-gradient(#eeeeee, #b5b5b5);
     background-image: -moz-linear-gradient(#eeeeee, #b5b5b5);
     background-image: -o-linear-gradient(#eeeeee, #b5b5b5);
     background-image: linear-gradient(#eeeeee, #b5b5b5); }
-  /* line 34, ../sass/piano.scss */
-  .piano li a {
-    color: #7b7b7b;
-    padding: 0.8em 1em 0 0;
-    display: inline-block;
-    text-decoration: none; }
-  /* line 42, ../sass/piano.scss */
-  .piano li.black {
+    /* line 37, ../sass/piano.scss */
+    .piano li a:hover span {
+      padding-right: 0.8em;
+      -webkit-transition: all 0.1s linear;
+      -moz-transition: all 0.1s linear;
+      -o-transition: all 0.1s linear;
+      transition: all 0.1s linear; }
+  /* line 43, ../sass/piano.scss */
+  .piano li a.black {
     text-align: center; }
-    /* line 45, ../sass/piano.scss */
-    .piano li.black:before {
+    /* line 46, ../sass/piano.scss */
+    .piano li a.black:before {
       content: '';
       width: 60%;
       height: 1.5em;
       display: block;
-      background-color: #383838;
+      background-color: #292929;
       position: absolute;
       margin-top: -0.75em;
       border-radius: 0 3px 3px 0;
       box-shadow: 0px -1px 0px black, 0px 1px 0px black, 1px 0px 0px black, inset 0px 1px 1px #565656, inset 0px -1px 1px #565656, inset -2px 0px 1px #565656; }
-    /* line 64, ../sass/piano.scss */
-    .piano li.black:after {
+    /* line 65, ../sass/piano.scss */
+    .piano li a.black:after {
       content: "";
-      background-color: #c6c5bf;
+      background-color: #979589;
       width: 4px;
       height: 4px;
       border-radius: 4px 3px 5px 2px;
       position: absolute;
       margin: 2px 0 0 5.5%; }
-    /* line 75, ../sass/piano.scss */
-    .piano li.black.high:before {
+    /* line 76, ../sass/piano.scss */
+    .piano li a.black.high:before {
       margin-top: -0.95em; }
-    /* line 79, ../sass/piano.scss */
-    .piano li.black.high:after {
+    /* line 80, ../sass/piano.scss */
+    .piano li a.black.high:after {
       margin-top: -1px; }
-    /* line 85, ../sass/piano.scss */
-    .piano li.black.low:before {
+    /* line 86, ../sass/piano.scss */
+    .piano li a.black.low:before {
       margin-top: -0.55em; }
-    /* line 89, ../sass/piano.scss */
-    .piano li.black.low:after {
+    /* line 90, ../sass/piano.scss */
+    .piano li a.black.low:after {
       margin-top: 5px; }

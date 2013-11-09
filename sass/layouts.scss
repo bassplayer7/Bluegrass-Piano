@@ -1,18 +1,18 @@
 /* ======== Layouts ======== */
 nav {
   float:left;
-  width:18%;
+  width:20%;
   min-width:2em;
+//  position: fixed;
+
 }
 
 .content {
   width:50%;
   float: left;
   padding:0 10%;
-//  background-color: $bg-color;
-//  opacity: 0.2;
+  margin-left:5%;
+  min-height: 100%;
 
-  * {
-    opacity: 1;
-  }
+  @include background-image(linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3)));
 }

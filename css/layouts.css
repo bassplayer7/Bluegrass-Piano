@@ -1,0 +1,10 @@
+/* ======== Layouts ======== */
+/* line 2, ../sass/layouts.scss */
+nav {
+  float: left;
+  width: 20%;
+  min-width: 21rem; }
+
+/* line 8, ../sass/layouts.scss */
+.content {
+  width: 50%; }

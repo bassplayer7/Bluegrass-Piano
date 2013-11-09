@@ -5,12 +5,12 @@
     padding:0;
   }
 
-  li {
+  li a {
     // Grunt work
     width:100%;
-    min-width: 15em;
+    min-width: 11.5em;
     height:$white-key-height;
-    border-bottom: 0.18em solid black;
+    border-bottom: 2px solid black;
     display: block;
     background-color: $white-key;
     position: relative;
@@ -23,21 +23,22 @@
     text-align: right;
     color:#7b7b7b;
 
-    &:hover {
-      height:$white-key-height - 0.2;
-      border-top:0.08em solid #696969;
-      border-bottom: 0.3em solid black;
-      @include background-image(linear-gradient(#eeeeee, #b5b5b5));
-//      @include transition(all 0.2s linear);
-    }
-
-    a {
-      color:#7b7b7b;
+    span {
       padding:0.8em 1em 0 0;
       display: inline-block;
       text-decoration: none;
     }
 
+    &:hover {
+      // Yay for CSS3!
+      box-shadow: inset 0px 0px 5px #000000;
+      @include background-image(linear-gradient(#eeeeee, #b5b5b5));
+
+      span {
+        padding-right:0.8em;
+        @include transition(all 0.1s linear);
+      }
+    }
 
     &.black {
       text-align: center;
@@ -63,7 +64,7 @@
 
       &:after {
         content: "";
-        background-color: #c6c5bf;
+        background-color: #979589;
         width:4px;
         height:4px;
         border-radius: 4px 3px 5px 2px;
