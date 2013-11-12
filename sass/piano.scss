@@ -41,7 +41,10 @@
     }
 
     &.black {
-      text-align: center;
+
+      span {
+        padding-top:1.2em
+      }
 
       &:before {
         content:'';
@@ -69,7 +72,7 @@
         height:4px;
         border-radius: 4px 3px 5px 2px;
         position: absolute;
-        margin:2px 0 0 5.5%;
+        margin:2px 0 0 -43%;
       }
 
       &.high {

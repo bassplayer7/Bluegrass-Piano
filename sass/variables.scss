@@ -1,3 +1,8 @@
+// Text
+$link-color: #8495a8;
+$link-hover-color: #72808f;
+$background-color:#363636;
+
 // Style and Feel
 $bg-color: #e7e7e7;
 
@@ -12,3 +17,13 @@ $black-key-high: $black-key-position - 0.2;
 $black-key-low: $black-key-position + 0.2;
 $black-key-outer-border: black;
 $black-key-inner-border: #565656;
+
+// Media Query support
+$piano: 800px;
+$keyboard:700px;
+$bass:600px;
+$guitar:500px;
+$banjo:400px;
+$fiddle:300px;
+$shaker:200px;
+
