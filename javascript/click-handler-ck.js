@@ -1,0 +1,3 @@
+/**
+ * Created by jessemaxwell on 1/2/14.
+ */function mouseeventHandler(e){e||(e=window.event);var t=e.type,n=e.target||e.srcElement;alert(t+" event on element with id: "+n.id)}function onloadHandler(){var e=document.body,t=document.createElement("span");t.id="ExampleSpan";t.appendChild(document.createTextNode("Click Here!"));t.onmousedown=mouseeventHandler;t.onmouseup=mouseeventHandler;t.onmouseover=mouseeventHandler;e.appendChild(t)}window.onload=onloadHandler;
