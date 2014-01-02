@@ -21,7 +21,7 @@
 </script>
 </head>
 
-<body>
+<body onkeydown="keyEvent(event)" onkeyup="metaKeyUp(event)">
 <nav class="piano">
     <ul>
         <li>
@@ -106,8 +106,9 @@
         var eTarget = event.target || event.srcElement
         alert ("Captured Event (type =" + eType + ", target=" + eTarget);
     }
-
 </script>
+<script type="text/javascript" src="javascript/click-handler.js"></script>
+<script type="text/javascript" src="javascript/key-event-ck.js"></script>
 
 </body>
 </html>
