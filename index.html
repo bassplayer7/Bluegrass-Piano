@@ -21,11 +21,11 @@
 </script>
 </head>
 
-<body>
+<body onload="keyboardNavigation()">
 <nav class="piano">
-    <ul>
+    <ul id="keyBoard">
         <li>
-            <a href="#top">
+            <a href="#top" id="first">
                 <span>BluegrassPiano</span>
             </a>
         </li>
@@ -54,15 +54,16 @@
         <li><a class="black low"></a></li>
         <li>
             <a href="#piano-vs-keyboard">
-                <span>Piano Vs. Keyboard</span>
+                <span>piano vs. keyboard</span>
             </a>
         </li>
         <li><a class="black high"></a></li>
         <li><a class="black low"></a></li>
     </ul>
 </nav>
+
 <div class="content">
-    <h1 id="top">Bluegrass Piano.com</h1>
+    <h1 id="top"><a href="/">Bluegrass Piano.com</a></h1>
     <p>Having piano as part of Bluegrass is fantastic, and a part of Bluegrass that I would love to see grow and expand. Following are a few suggestions on how to play Bluegrass Piano. To start, though, learn the basics on the piano, and, of course, listen to Bluegrass music. The piano is a very flexible instrument. It can be it's own band (there are many, many records that have been recorded like this), or it can be part of a band, obviously. It's range of sounds and styles (exciting, depressing, calming, energizing, and more) seems infinite, which makes it a perfect addition to the Bluegrass genre.</p>
 
     <div id="bluegrass-piano">
@@ -100,8 +101,12 @@
 
 </div>
 
+<script type="text/javascript" src="javascript/keyboard-play.js"></script>
+
 <!--<script type="text/javascript" src="javascript/click-handler.js"></script>-->
 <!--<script type="text/javascript" src="javascript/key-event-ck.js"></script>-->
+
+<script type="text/javascript" src="javascript/triangle.js"></script>
 
 </body>
 </html>

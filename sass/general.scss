@@ -54,12 +54,21 @@ div[id] {
 
 h1 {
   margin: 0.5em auto 0;
-  @include rotateZ(3deg);
   font-size: 4em;
   font-family: 'Raleway', sans-serif;
   text-shadow:2px 2px 0px rgba(0,0,0,0.9);
   text-decoration: none;
   text-align: center;
+
+  a {
+    color: $heading-color;
+    text-decoration: none;
+
+    &:visited,
+    &:hover {
+      color: $heading-color;
+    }
+  }
 }
 
 h2 {

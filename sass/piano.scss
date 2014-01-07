@@ -29,7 +29,8 @@
       text-decoration: none;
     }
 
-    &:hover {
+    &:hover,
+    .active {
       // Yay for CSS3!
       box-shadow: inset 0px 0px 5px #000000;
       @include background-image(linear-gradient(#eeeeee, #b5b5b5));
