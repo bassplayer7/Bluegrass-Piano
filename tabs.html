@@ -1,0 +1,40 @@
+<html>
+<head>
+    <title>Tabs</title>
+    <style type="text/css">
+        ol.tablinks {
+            margin: 0; padding: 0;
+        }
+        ol.tablinks li {
+            float: left;
+            border: 2px solid red;
+            border-width: 2px 2px 0 2px;
+            background: #eee;
+            list-style: none;
+            padding: 5px;
+            margin: 0;
+        }
+        ol.tablinks li a {
+            text-decoration: none;
+            color: black;
+        }
+        div.tab {
+            clear: left;
+            border: 2px solid red;
+            border-width: 1px 2px 2px 2px;
+        }
+    </style>
+</head>
+<body>
+    <ol class="tablinks">
+        <li><a href="#tab1">Tab 1</a></li>
+        <li><a href="#tab2">Tab 2</a></li>
+        <li><a href="#tab3">Tab 3</a></li>
+    </ol>
+
+    <div class="tab" id="tab1">This is tab 1</div>
+    <div class="tab" id="tab2">This is tab 2</div>
+    <div class="tab" id="tab3">This is tab 3</div>
+</body>
+<script type="text/javascript" src="javascript/tabs.js"></script>
+</html>
