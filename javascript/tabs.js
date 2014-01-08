@@ -10,7 +10,7 @@ var tabify = {
     },
     removeClass: function(el, c) {
         if (tabify.hasClass(el,c)) {
-            el.className=el.className.replace(new RegExp('(\\s|^)'+c+'(\\s|$)'), (' '));
+            el.className=el.className.replace(new RegExp('(\\s|^)'+c+'(\\s|$)'), ' ');
         }
     },
     hideAllTabs: function(ol) {
@@ -42,7 +42,7 @@ var tabify = {
         for (var i=0; i < ols.length; i++) {
             var ol = ols[i];
             if (!/(^|\s)tablinks(\s|$)/.test(ol.className)) { continue; }
-            tabify.addEvent(ol, "click", function(e) {
+            tabify.addEvent(ol, "mouseover", function(e) {
                 var target = window.event ? window.event.srcElement : e.target;
                 if (target.nodeName.toLowerCase() === "a") {
                     tabify.hideAllTabs(e.target.parentNode.parentNode);
