@@ -1,9 +1,11 @@
 // Text
-$link-color: #8495a8;
-$link-hover-color: #72808f;
+$link-color: #B2C1D1;
+$link-hover-color: darken($link-color, 10%);
 $background-color:#363636;
 $heading-color:#ededed;
 $light-heading: #F5F5F5;
+$content-text-size: 18px; // Only px unless the calc below is adjusted.
+$content-line-height: $content-text-size + 4px;
 
 // Style and Feel
 $bg-color: #e7e7e7;
