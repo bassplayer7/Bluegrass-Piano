@@ -1,0 +1,2 @@
+// Created by Me.
+function alertLinkClick(){var e=document.getElementsByTagName("a");for(i=0;i<e.length;i++)e[i].addEventListener("click",function(){alert("Sorry, I am going to delay you momentarily.");e.preventDefault()})}window.addEventListener("load",alertLinkClick());

@@ -7,11 +7,16 @@ nav {
   @media screen and (min-height:$keyboard) {
     position:fixed;
   }
+
+  @media screen and (max-width: $keyboard) {
+    display: none;
+  }
+
 }
 
 .content {
-  max-width:700px;
-  width:50%;
+  max-width:1200px;
+  width:75%;
   float: left;
   padding:0 10% 4em;
   margin-left:5%;
@@ -20,7 +25,18 @@ nav {
 
   @include background-image(linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3)));
 
-  @media screen and (min-height:$keyboard) {
-    margin-left:25%;
+  @media screen and (min-height: $keyboard) {
+    margin-left: 25%;
+  }
+
+  @media screen and (max-width: $keyboard) {
+    width: 100%;
+    margin: 0 auto;
+    padding: 5% 3em;
+  }
+
+  @media screen and (max-width: $banjo) {
+    padding: 0.5em;
+    background-color: $background-color;
   }
 }
