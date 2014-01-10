@@ -5,12 +5,12 @@
     padding:0;
   }
 
-  li a {
+  li.white {
     // Grunt work
     width:100%;
     min-width: 11.5em;
     height:$white-key-height;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #000;
     display: block;
     background-color: $white-key;
     position: relative;
@@ -19,17 +19,14 @@
     border-radius: 0 5px 5px 0;
     box-shadow: inset -1px -2px 4px #ffffff;
 
-    // Text
-    text-align: right;
-    color:#7b7b7b;
-
-    span {
+    a {
       padding:0.8em 1em 0 0;
       display: inline-block;
       text-decoration: none;
+      float: right;
+      color:#7b7b7b;
     }
 
-//    &:hover,
     &.active {
       // Yay for CSS3!
       box-shadow: inset 0px 0px 5px #000000;
@@ -40,61 +37,53 @@
         @include transition(all 0.1s linear);
       }
     }
+  }
 
-    &.black {
+  li.black {
+    width:60%;
+    height:$black-key-height;
+    display: block;
+    background-color: $black-key;
+    position: absolute;
+    margin-top: $black-key-position;
+    z-index: 10;
 
-      span {
-        padding-top:1.2em
-      }
+    // Realism
+    border-radius: 0 3px 3px 0;
+    box-shadow: 0px -1px 0px $black-key-outer-border,
+                0px 1px 0px $black-key-outer-border,
+                1px 0px 0px $black-key-outer-border,
+                inset 0px 1px 1px $black-key-inner-border,
+                inset 0px -1px 1px $black-key-inner-border,
+                inset -2px 0px 1px $black-key-inner-border;
 
+    span {
+      padding-top:1.2em
+    }
+
+    &.high {
       &:before {
-        content:'';
-        width:60%;
-        height:$black-key-height;
-        display: block;
-        background-color: $black-key;
-        position: absolute;
-        margin-top: $black-key-position;
-
-        // Realism
-        border-radius: 0 3px 3px 0;
-        box-shadow: 0px -1px 0px $black-key-outer-border,
-                    0px 1px 0px $black-key-outer-border,
-                    1px 0px 0px $black-key-outer-border,
-              inset 0px 1px 1px $black-key-inner-border,
-              inset 0px -1px 1px $black-key-inner-border,
-              inset -2px 0px 1px $black-key-inner-border;
+        margin-top:$black-key-high;
       }
 
       &:after {
-        content: "";
-        background-color: #979589;
-        width:4px;
-        height:4px;
-        border-radius: 4px 3px 5px 2px;
-        position: absolute;
-        margin:2px 0 0 -43%;
+        margin-top:-1px;
+      }
+    }
+
+    &.low {
+      &:before {
+        margin-top: $black-key-low;
       }
 
-      &.high {
-        &:before {
-          margin-top:$black-key-high;
-        }
-
-        &:after {
-          margin-top:-1px;
-        }
+      &:after {
+        margin-top:5px;
       }
+    }
 
-      &.low {
-        &:before {
-          margin-top: $black-key-low;
-        }
-
-        &:after {
-          margin-top:5px;
-        }
-      }
+    &.active {
+      background-color:darken($black-key, 10%);
+      box-shadow: 0px -1px 0px #000;
     }
   }
 }

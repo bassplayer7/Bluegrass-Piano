@@ -10,8 +10,8 @@
 var Navigation = function() {
     var base = this;
 
-    base.keyboard = document.getElementById('keyBoard');
-    base.whiteKey = base.keyboard.getElementsByTagName('a');
+    base.keyboard = document.getElementById('keyboard');
+    base.whiteKey = base.keyboard.getElementsByTagName('li');
 
     base.addActive = function(e) {
         var pressedKey = e.target;
@@ -25,7 +25,7 @@ var Navigation = function() {
 
         base.replaceClassName(target);
 
-        if (parent.tagName === "A") {
+        if (parent.tagName === "LI") {
             base.replaceClassName(parent);
         }
     };
@@ -38,7 +38,7 @@ var Navigation = function() {
 
     base.keepActive = function(e) {
         var parent = e.target.offsetParent;
-        if (parent.tagName === "A") {
+        if (parent.tagName === "LI") {
             parent.className += " active";
             e.target.addEventListener('mouseout', base.removeActive)
         }
@@ -50,8 +50,8 @@ var Navigation = function() {
             var whiteKey = base.whiteKey[i];
 
             whiteKey.addEventListener('mouseover', base.addActive, true);
-            if (whiteKey.getElementsByTagName('span').length > 0) {
-                whiteKey.getElementsByTagName('span')[0].addEventListener('mouseover', base.keepActive, true);
+            if (whiteKey.getElementsByTagName('a').length > 0) {
+                whiteKey.getElementsByTagName('a')[0].addEventListener('mouseover', base.keepActive, true);
             }
         }
     };

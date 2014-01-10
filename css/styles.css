@@ -258,70 +258,65 @@ nav {
   margin: 0;
   padding: 0; }
 /* line 8, ../sass/piano.scss */
-.piano li a {
+.piano li.white {
   width: 100%;
   min-width: 11.5em;
   height: 3em;
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid #000;
   display: block;
   background-color: #e5e5e5;
   position: relative;
   border-radius: 0 5px 5px 0;
-  box-shadow: inset -1px -2px 4px #ffffff;
-  text-align: right;
-  color: #7b7b7b; }
-  /* line 26, ../sass/piano.scss */
-  .piano li a span {
+  box-shadow: inset -1px -2px 4px #ffffff; }
+  /* line 22, ../sass/piano.scss */
+  .piano li.white a {
     padding: 0.8em 1em 0 0;
     display: inline-block;
-    text-decoration: none; }
-  /* line 33, ../sass/piano.scss */
-  .piano li a.active {
+    text-decoration: none;
+    float: right;
+    color: #7b7b7b; }
+  /* line 30, ../sass/piano.scss */
+  .piano li.white.active {
     box-shadow: inset 0px 0px 5px #000000;
     background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #b5b5b5));
     background-image: -webkit-linear-gradient(#eeeeee, #b5b5b5);
     background-image: -moz-linear-gradient(#eeeeee, #b5b5b5);
     background-image: -o-linear-gradient(#eeeeee, #b5b5b5);
     background-image: linear-gradient(#eeeeee, #b5b5b5); }
-    /* line 38, ../sass/piano.scss */
-    .piano li a.active span {
+    /* line 35, ../sass/piano.scss */
+    .piano li.white.active span {
       padding-right: 0.8em;
       -webkit-transition: all 0.1s linear;
       -moz-transition: all 0.1s linear;
       -o-transition: all 0.1s linear;
       transition: all 0.1s linear; }
-  /* line 46, ../sass/piano.scss */
-  .piano li a.black span {
+/* line 42, ../sass/piano.scss */
+.piano li.black {
+  width: 60%;
+  height: 1.5em;
+  display: block;
+  background-color: #292929;
+  position: absolute;
+  margin-top: -0.75em;
+  z-index: 10;
+  border-radius: 0 3px 3px 0;
+  box-shadow: 0px -1px 0px black, 0px 1px 0px black, 1px 0px 0px black, inset 0px 1px 1px #565656, inset 0px -1px 1px #565656, inset -2px 0px 1px #565656; }
+  /* line 60, ../sass/piano.scss */
+  .piano li.black span {
     padding-top: 1.2em; }
-  /* line 50, ../sass/piano.scss */
-  .piano li a.black:before {
-    content: '';
-    width: 60%;
-    height: 1.5em;
-    display: block;
-    background-color: #292929;
-    position: absolute;
-    margin-top: -0.75em;
-    border-radius: 0 3px 3px 0;
-    box-shadow: 0px -1px 0px black, 0px 1px 0px black, 1px 0px 0px black, inset 0px 1px 1px #565656, inset 0px -1px 1px #565656, inset -2px 0px 1px #565656; }
-  /* line 69, ../sass/piano.scss */
-  .piano li a.black:after {
-    content: "";
-    background-color: #979589;
-    width: 4px;
-    height: 4px;
-    border-radius: 4px 3px 5px 2px;
-    position: absolute;
-    margin: 2px 0 0 -43%; }
-  /* line 80, ../sass/piano.scss */
-  .piano li a.black.high:before {
+  /* line 65, ../sass/piano.scss */
+  .piano li.black.high:before {
     margin-top: -0.95em; }
-  /* line 84, ../sass/piano.scss */
-  .piano li a.black.high:after {
+  /* line 69, ../sass/piano.scss */
+  .piano li.black.high:after {
     margin-top: -1px; }
-  /* line 90, ../sass/piano.scss */
-  .piano li a.black.low:before {
+  /* line 75, ../sass/piano.scss */
+  .piano li.black.low:before {
     margin-top: -0.55em; }
-  /* line 94, ../sass/piano.scss */
-  .piano li a.black.low:after {
+  /* line 79, ../sass/piano.scss */
+  .piano li.black.low:after {
     margin-top: 5px; }
+  /* line 84, ../sass/piano.scss */
+  .piano li.black.active {
+    background-color: #101010;
+    box-shadow: 0px -1px 0px #000; }
