@@ -2,11 +2,6 @@
  * The goal of this is to make all the keyboard notes play.
  */
 
-
-
-//var keyBoard = document.getElementById('keyBoard');
-//var whiteKey = keyBoard.getElementsByTagName('a');
-
 var Navigation = function() {
     var base = this;
 
