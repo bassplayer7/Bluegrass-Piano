@@ -16,7 +16,6 @@ var Scrolling = function() {
     };
 
     base.elmYPosition = function(eID) {
-//        console.log(eID);
         var elm = document.getElementById(eID);
         var y = elm.offsetTop;
         var node = elm;
@@ -26,13 +25,8 @@ var Scrolling = function() {
         } return y;
     };
 
-    base.getDestination = function(evt) {
-
-    }
-
-    base.smoothScroll = function(eID) {
-        console.log(eID);
-        var eID = base.getDestination(evt);
+    base.smoothScroll = function(evt) {
+        var eID = evt.toElement.hash.substr(1);
         var startY = base.currentYPosition();
         var stopY = base.elmYPosition(eID);
         var distance = stopY > startY ? stopY - startY : startY - stopY;
@@ -62,7 +56,6 @@ var Scrolling = function() {
         for (; i < pageLinks.length; i++) {
             if (pageLinks[i].hash) {
                 pageLinks[i].addEventListener("click", base.smoothScroll, true);
-                console.log(pageLinks[i].hash)
             }
         }
     }
