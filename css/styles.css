@@ -276,8 +276,7 @@ nav {
     display: inline-block;
     text-decoration: none; }
   /* line 33, ../sass/piano.scss */
-  .piano li a:hover,
-  .piano li a .active {
+  .piano li a.active {
     box-shadow: inset 0px 0px 5px #000000;
     background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #b5b5b5));
     background-image: -webkit-linear-gradient(#eeeeee, #b5b5b5);
@@ -285,8 +284,7 @@ nav {
     background-image: -o-linear-gradient(#eeeeee, #b5b5b5);
     background-image: linear-gradient(#eeeeee, #b5b5b5); }
     /* line 38, ../sass/piano.scss */
-    .piano li a:hover span,
-    .piano li a .active span {
+    .piano li a.active span {
       padding-right: 0.8em;
       -webkit-transition: all 0.1s linear;
       -moz-transition: all 0.1s linear;
