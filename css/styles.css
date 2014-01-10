@@ -212,7 +212,8 @@ em {
 nav {
   float: left;
   width: 20%;
-  min-width: 2em; }
+  min-width: 2em;
+  position: absolute; }
   @media screen and (min-height: 700px) {
     /* line 2, ../sass/layouts.scss */
     nav {
@@ -222,13 +223,13 @@ nav {
     nav {
       display: none; } }
 
-/* line 17, ../sass/layouts.scss */
+/* line 18, ../sass/layouts.scss */
 .content {
   max-width: 1200px;
   width: 75%;
   float: left;
   padding: 0 10% 4em;
-  margin-left: 5%;
+  margin-left: 25%;
   min-height: 100%;
   margin-bottom: 4em;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.2)), color-stop(100%, rgba(255, 255, 255, 0.3)));
@@ -236,18 +237,14 @@ nav {
   background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3));
   background-image: -o-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3));
   background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3)); }
-  @media screen and (min-height: 700px) {
-    /* line 17, ../sass/layouts.scss */
-    .content {
-      margin-left: 25%; } }
   @media screen and (max-width: 700px) {
-    /* line 17, ../sass/layouts.scss */
+    /* line 18, ../sass/layouts.scss */
     .content {
       width: 100%;
       margin: 0 auto;
       padding: 5% 3em; } }
   @media screen and (max-width: 400px) {
-    /* line 17, ../sass/layouts.scss */
+    /* line 18, ../sass/layouts.scss */
     .content {
       padding: 0.5em;
       background-color: #363636; } }
@@ -301,22 +298,22 @@ nav {
   z-index: 10;
   border-radius: 0 3px 3px 0;
   box-shadow: 0px -1px 0px black, 0px 1px 0px black, 1px 0px 0px black, inset 0px 1px 1px #565656, inset 0px -1px 1px #565656, inset -2px 0px 1px #565656; }
-  /* line 60, ../sass/piano.scss */
+  /* line 64, ../sass/piano.scss */
   .piano li.black span {
     padding-top: 1.2em; }
-  /* line 65, ../sass/piano.scss */
+  /* line 69, ../sass/piano.scss */
   .piano li.black.high:before {
     margin-top: -0.95em; }
-  /* line 69, ../sass/piano.scss */
+  /* line 73, ../sass/piano.scss */
   .piano li.black.high:after {
     margin-top: -1px; }
-  /* line 75, ../sass/piano.scss */
+  /* line 79, ../sass/piano.scss */
   .piano li.black.low:before {
     margin-top: -0.55em; }
-  /* line 79, ../sass/piano.scss */
+  /* line 83, ../sass/piano.scss */
   .piano li.black.low:after {
     margin-top: 5px; }
-  /* line 84, ../sass/piano.scss */
+  /* line 88, ../sass/piano.scss */
   .piano li.black.active {
     background-color: #101010;
     box-shadow: 0px -1px 0px #000; }
