@@ -3,6 +3,7 @@ nav {
   float:left;
   width:20%;
   min-width:2em;
+  position: absolute;
 
   @media screen and (min-height:$keyboard) {
     position:fixed;
@@ -19,15 +20,11 @@ nav {
   width:75%;
   float: left;
   padding:0 10% 4em;
-  margin-left:5%;
+  margin-left:25%;
   min-height: 100%;
   margin-bottom:4em;
 
   @include background-image(linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3)));
-
-  @media screen and (min-height: $keyboard) {
-    margin-left: 25%;
-  }
 
   @media screen and (max-width: $keyboard) {
     width: 100%;

@@ -57,6 +57,10 @@
                 inset 0px -1px 1px $black-key-inner-border,
                 inset -2px 0px 1px $black-key-inner-border;
 
+    @media screen and (min-height: $keyboard) {
+
+    }
+
     span {
       padding-top:1.2em
     }
