@@ -7,8 +7,10 @@ var Navigation = function() {
 
     base.keyboard = document.getElementById('keyboard');
     base.whiteKey = base.keyboard.getElementsByTagName('li');
+    base.activeElements = new Array();
 
     base.addActive = function(e) {
+//        console.log(e);
         var pressedKey = e.target;
         pressedKey.className += " active";
         pressedKey.addEventListener('mouseout', base.removeActive);
@@ -24,7 +26,6 @@ var Navigation = function() {
             base.replaceClassName(parent);
         }
     };
-
 
     base.replaceClassName = function(input) {
         input.className = input.className.replace(/(?:^|\s)active(?!\S)/g , '' );
@@ -51,17 +52,62 @@ var Navigation = function() {
         }
     };
 
-    base.getWhiteScale = function() {
-        return [0, 2, 4, 5, 7, 9, 11, 12];
+    base.currentKey = function() {
+        var totalKeys = base.whiteKey.length;
+        var docHeight = document.childNodes[1].offsetHeight;
+        var rangeOfKey = (docHeight * 2) / totalKeys;
+        var arr = new Array();
+        var i = 0;
+        for (; i < base.whiteKey.length; i++) {
+            arr.push(rangeOfKey * i);
+        }
+        return arr;
     };
 
-    base.getBlackScale = function() {
-        return [1, 3, 6, 8, 10];
+    base.removeActiveScroll = function(pos) {
+        var position = base.currentKey(),
+            activeKey = position[pos],
+            allActive = base.activeElements,
+            i = 0;
+
+        for (; i < allActive.length; i++) {
+            if (activeKey !== base.whiteKey[i]){
+                console.log(allActive[i] + " current active");
+                base.replaceClassName(base.whiteKey[i]);
+            }
+        }
+    };
+
+    base.pressKeys = function() {
+        var totalKeys = base.whiteKey.length;
+        var docHeight = document.childNodes[1].offsetHeight;
+        var rangeOfKey = (docHeight * 1.4) / totalKeys;
+        var currentScroll = window.scrollY;
+        var position = base.currentKey();
+
+        var i = 0;
+        for (; i < position.length; i++) {
+            console.log(position[i] + " current Y");
+            if (currentScroll > position[i] && currentScroll < (position[i] + rangeOfKey)) {
+                base.whiteKey[i].className += " active";
+
+                if (base.activeElements[i] !== position[i]) {
+                    base.activeElements.push(position[i]);
+                }
+                console.log(base.activeElements);
+                break;
+            } else {
+//                console.log(position[i] + "position[i]");
+                base.removeActiveScroll(i);
+            }
+        }
     }
 }
 
 var navigation = new Navigation();
 window.addEventListener("load", navigation.findKeys, true);
+window.addEventListener("load", navigation.currentKey, true);
+window.addEventListener("scroll", navigation.pressKeys, true);
 
 
 
