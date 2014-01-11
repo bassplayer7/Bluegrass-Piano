@@ -8,8 +8,8 @@ var Navigation = function() {
     base.keyboard = document.getElementById('keyboard');
     base.whiteKey = base.keyboard.getElementsByTagName('li');
     base.totalKeys = base.whiteKey.length;
-    base.docHeight = document.childNodes[1].offsetHeight;
-    base.rangeOfKey = base.docHeight / base.totalKeys;
+    base.docHeight = document.childNodes[1].scrollHeight - document.childNodes[1].clientHeight;
+    base.rangeOfKey = base.docHeight / base.totalKeys - 1;
 
     base.addActive = function(e) {
         var pressedKey = e.target;
@@ -66,24 +66,19 @@ var Navigation = function() {
 
     base.removeActiveScroll = function(pos) {
         base.replaceClassName(base.whiteKey[pos]);
+        console.log(base.whiteKey[pos]);
     };
 
     base.pressKeys = function() {
-//        var totalKeys = base.whiteKey.length;
-//        var docHeight = document.childNodes[1].offsetHeight;
-//        var rangeOfKey = docHeight / totalKeys;
         var currentScroll = window.scrollY;
-//        var position = base.currentKey();
 
         var i = 0;
         for (; i < base.position.length; i++) {
-            if (currentScroll > base.position[i] && currentScroll < (base.position[i] + base.rangeOfKey)) {
+            if (currentScroll >= base.position[i] && currentScroll <= (base.position[i] + base.rangeOfKey)) {
                 base.whiteKey[i].className += " active";
                 base.activeElements = i;
-                console.log(base.activeElements);
                 break;
             } else {
-//                console.log(position[i] + "position[i]");
                 base.removeActiveScroll(i);
             }
         }
