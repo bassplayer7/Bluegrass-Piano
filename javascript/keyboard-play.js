@@ -10,6 +10,7 @@ var Navigation = function() {
     base.totalKeys = base.whiteKey.length;
     base.docHeight = document.childNodes[1].scrollHeight - document.childNodes[1].clientHeight;
     base.rangeOfKey = base.docHeight / base.totalKeys - 1;
+    base.activeElements = 0;
 
     base.addActive = function(e) {
         var pressedKey = e.target;
@@ -37,7 +38,7 @@ var Navigation = function() {
         var parent = e.target.offsetParent;
         if (parent.tagName === "LI") {
             parent.className += " active";
-            e.target.addEventListener('mouseout', base.removeActive)
+            e.target.addEventListener('mouseout', base.removeActive);
         }
     };
 
@@ -54,7 +55,7 @@ var Navigation = function() {
     };
 
     base.currentKey = function() {
-        var arr = new Array();
+        var arr = [];
         var i = 0;
         for (; i < base.whiteKey.length; i++) {
             arr.push(base.rangeOfKey * i);
@@ -66,7 +67,7 @@ var Navigation = function() {
 
     base.removeActiveScroll = function(pos) {
         base.replaceClassName(base.whiteKey[pos]);
-        console.log(base.whiteKey[pos]);
+//        console.log(base.whiteKey[pos]);
     };
 
     base.pressKeys = function() {
@@ -77,13 +78,14 @@ var Navigation = function() {
             if (currentScroll >= base.position[i] && currentScroll <= (base.position[i] + base.rangeOfKey)) {
                 base.whiteKey[i].className += " active";
                 base.activeElements = i;
+                return true;
                 break;
             } else {
                 base.removeActiveScroll(i);
             }
         }
-    }
-}
+    };
+};
 
 var navigation = new Navigation();
 window.addEventListener("load", navigation.findKeys, true);
