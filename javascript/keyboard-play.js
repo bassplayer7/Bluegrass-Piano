@@ -78,8 +78,6 @@ var Navigation = function() {
             if (currentScroll >= base.position[i] && currentScroll <= (base.position[i] + base.rangeOfKey)) {
                 base.whiteKey[i].className += " active";
                 base.activeElements = i;
-                return true;
-                break;
             } else {
                 base.removeActiveScroll(i);
             }
@@ -90,7 +88,8 @@ var Navigation = function() {
 var navigation = new Navigation();
 window.addEventListener("load", navigation.findKeys, true);
 window.addEventListener("load", navigation.currentKey, true);
-window.addEventListener("scroll", navigation.pressKeys, true);
+window.addEventListener("load", navigation.pressKeys, true);
+window.addEventListener("scroll", navigation.pressKeys(), true);
 
 
 
