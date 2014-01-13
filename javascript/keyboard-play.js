@@ -12,12 +12,14 @@ var Navigation = function() {
     base.rangeOfKey = base.docHeight / base.totalKeys - 1;
     base.activeElements = 0;
 
+    // This adds the "active" class to the keys when they are hovered.
     base.addActive = function(e) {
         var pressedKey = e.target;
         pressedKey.className += " active";
         pressedKey.addEventListener('mouseout', base.removeActive);
     };
 
+    // Removes the "active" class from the <li /> even if an <a /> triggers mouse-out.
     base.removeActive = function(e) {
         var target = e.target,
             parent = e.target.offsetParent;
@@ -29,11 +31,13 @@ var Navigation = function() {
         }
     };
 
+    // Finds and replaces the "active" class.
     base.replaceClassName = function(input) {
         input.className = input.className.replace(/(?:^|\s)active(?!\S)/g , '' );
         return base;
     };
 
+    // If the parent is a <li /> then keep the active on.
     base.keepActive = function(e) {
         var parent = e.target.offsetParent;
         if (parent.tagName === "LI") {
@@ -63,11 +67,8 @@ var Navigation = function() {
         return arr;
     };
 
-    base.position = base.currentKey();
-
     base.removeActiveScroll = function(pos) {
         base.replaceClassName(base.whiteKey[pos]);
-//        console.log(base.whiteKey[pos]);
     };
 
     base.pressKeys = function() {
@@ -83,14 +84,19 @@ var Navigation = function() {
             }
         }
     };
+
+    base.load = function() {
+        base.findKeys();
+        base.currentKey();
+        base.pressKeys()
+        base.position = base.currentKey();
+
+        window.addEventListener("scroll", navigation.pressKeys, true);
+    }
 };
 
 var navigation = new Navigation();
-window.addEventListener("load", navigation.findKeys, true);
-window.addEventListener("load", navigation.currentKey, true);
-window.addEventListener("load", navigation.pressKeys, true);
-window.addEventListener("scroll", navigation.pressKeys(), true);
-
+window.addEventListener("load", navigation.load, true);
 
 
 
