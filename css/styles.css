@@ -69,89 +69,91 @@ html {
 
 /* line 10, ../sass/general.scss */
 body {
-  background: url("../images/bg-keys.jpg") center center no-repeat white;
-  background-position: fixed;
-  background-attachment: fixed;
   font-family: 'Lato', sans-serif;
   color: #4d4d4d;
   font-weight: 300;
   text-align: left;
   font-size: 18px; }
+  @media (min-width: 400px) {
+    /* line 10, ../sass/general.scss */
+    body {
+      background: url("../images/bg-keys.jpg") center center no-repeat white;
+      background-attachment: fixed; } }
 
-/* line 23, ../sass/general.scss */
+/* line 22, ../sass/general.scss */
 a {
   color: #56769e;
   text-decoration: none;
   border-bottom: 1px dashed #56769e; }
-  /* line 28, ../sass/general.scss */
+  /* line 27, ../sass/general.scss */
   a:visited {
     color: #56769e; }
-  /* line 32, ../sass/general.scss */
+  /* line 31, ../sass/general.scss */
   a:hover {
     text-decoration: none;
     border-bottom: 1px solid #56769e;
     color: #445d7d; }
 
-/* line 39, ../sass/general.scss */
+/* line 38, ../sass/general.scss */
 :target {
   -webkit-animation: highlight 3s ease;
   -moz-animation: highlight 3s ease; }
 
 @-webkit-keyframes highlight {
-  /* line 45, ../sass/general.scss */
+  /* line 44, ../sass/general.scss */
   0% {
     background-color: transparent; }
 
-  /* line 46, ../sass/general.scss */
+  /* line 45, ../sass/general.scss */
   25% {
     background-color: white; }
 
-  /* line 47, ../sass/general.scss */
+  /* line 46, ../sass/general.scss */
   100% {
     background-color: transparent; } }
 
 @-moz-keyframes highlight {
-  /* line 51, ../sass/general.scss */
+  /* line 50, ../sass/general.scss */
   0% {
     background-color: transparent; }
 
-  /* line 52, ../sass/general.scss */
+  /* line 51, ../sass/general.scss */
   25% {
     background-color: white; }
 
-  /* line 53, ../sass/general.scss */
+  /* line 52, ../sass/general.scss */
   100% {
     background-color: transparent; } }
 
-/* line 57, ../sass/general.scss */
+/* line 56, ../sass/general.scss */
 div[id] {
   padding: 1em;
   border-radius: 5px; }
 
-/* line 62, ../sass/general.scss */
+/* line 61, ../sass/general.scss */
 h1 {
   margin: 0.5em auto 0;
   font-size: 4em;
   font-family: 'Raleway', sans-serif;
   font-weight: 100;
-  text-decoration: none;
   text-align: center; }
-  /* line 71, ../sass/general.scss */
+  /* line 69, ../sass/general.scss */
   h1 a {
     color: #4d4d4d;
-    text-decoration: none; }
-    /* line 75, ../sass/general.scss */
+    text-decoration: none;
+    border-bottom: 0; }
+    /* line 74, ../sass/general.scss */
     h1 a:visited {
       color: #4d4d4d; }
-    /* line 79, ../sass/general.scss */
+    /* line 78, ../sass/general.scss */
     h1 a:hover {
       border-bottom: #445d7d 1px dashed; }
   @media screen and (max-width: 500px) {
-    /* line 62, ../sass/general.scss */
+    /* line 61, ../sass/general.scss */
     h1 {
       font-size: 2.8em; } }
 
-/* line 89, ../sass/general.scss */
+/* line 88, ../sass/general.scss */
 h2 {
   font-size: 2.5em;
   text-align: center;
@@ -159,11 +161,11 @@ h2 {
   font-family: 'Raleway', sans-serif;
   font-weight: 100; }
   @media screen and (max-width: 500px) {
-    /* line 89, ../sass/general.scss */
+    /* line 88, ../sass/general.scss */
     h2 {
       font-size: 2.1em; } }
 
-/* line 101, ../sass/general.scss */
+/* line 100, ../sass/general.scss */
 h3 {
   font-size: 2em;
   text-align: center;
@@ -171,40 +173,40 @@ h3 {
   font-weight: 100;
   margin: 1.2em 0 0; }
 
-/* line 109, ../sass/general.scss */
+/* line 108, ../sass/general.scss */
 p {
   margin: 0 auto;
   margin-top: 0.8em;
   line-height: 22px; }
 
-/* line 115, ../sass/general.scss */
+/* line 114, ../sass/general.scss */
 dl {
   line-height: 22px; }
-  /* line 116, ../sass/general.scss */
+  /* line 115, ../sass/general.scss */
   dl dt {
     text-transform: uppercase;
     margin-top: 1em; }
-  /* line 121, ../sass/general.scss */
+  /* line 120, ../sass/general.scss */
   dl dd {
     padding-left: 2em; }
 
-/* line 128, ../sass/general.scss */
+/* line 127, ../sass/general.scss */
 ul {
   list-style: disc inside none;
   line-height: 22px; }
 
-/* line 133, ../sass/general.scss */
+/* line 132, ../sass/general.scss */
 ol {
   list-style: decimal outside none;
   margin-top: 0.5em;
   padding-left: 2em;
   line-height: 22px; }
 
-/* line 140, ../sass/general.scss */
+/* line 139, ../sass/general.scss */
 em {
   font-style: italic; }
 
-/* line 144, ../sass/general.scss */
+/* line 143, ../sass/general.scss */
 .updated {
   font-size: 0.7em;
   margin-top: 6em;
