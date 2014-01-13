@@ -8,9 +8,13 @@ html {
 }
 
 body {
-  background: $background-color;
+//  background: $background-color;
+  background: url('../images/bg-keys.jpg') center center no-repeat $background-color;
+  background-position: fixed;
+  background-attachment: fixed;
   font-family: 'Lato', sans-serif;
-  color: #ffffff;
+//  color: #ffffff;
+  color: #4d4d4d;
   font-weight: 300;
   text-align: left;
   font-size: $content-text-size;
@@ -18,6 +22,8 @@ body {
 
 a {
   color:$link-color;
+  text-decoration: none;
+  border-bottom: 1px dashed $link-color;
 
   &:visited {
     color:$link-color;
@@ -25,6 +31,7 @@ a {
 
   &:hover {
     text-decoration: none;
+    border-bottom: 1px solid $link-color;
     color: $link-hover-color;
   }
 }
@@ -57,7 +64,7 @@ h1 {
   font-size: 4em;
   font-family: 'Raleway', sans-serif;
   font-weight: 100;
-  text-shadow:2px 2px 0px rgba(0,0,0,0.9);
+//  text-shadow:2px 2px 0px rgba(0,0,0,0.9);
   text-decoration: none;
   text-align: center;
 

@@ -16,6 +16,7 @@ nav {
 }
 
 .content {
+  border-top: 8px solid #954a4a;
   max-width:1200px;
   width:75%;
   float: left;
@@ -24,7 +25,7 @@ nav {
   min-height: 100%;
   margin-bottom:4em;
 
-  @include background-image(linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3)));
+  @include background-image(linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)));
 
   @media screen and (max-width: $keyboard) {
     width: 100%;

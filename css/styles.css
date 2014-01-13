@@ -69,85 +69,89 @@ html {
 
 /* line 10, ../sass/general.scss */
 body {
-  background: #363636;
+  background: url("../images/bg-keys.jpg") center center no-repeat white;
+  background-position: fixed;
+  background-attachment: fixed;
   font-family: 'Lato', sans-serif;
-  color: #ffffff;
+  color: #4d4d4d;
   font-weight: 300;
   text-align: left;
   font-size: 18px; }
 
-/* line 19, ../sass/general.scss */
+/* line 23, ../sass/general.scss */
 a {
-  color: #b2c1d1; }
-  /* line 22, ../sass/general.scss */
+  color: #56769e;
+  text-decoration: none;
+  border-bottom: 1px dashed #56769e; }
+  /* line 28, ../sass/general.scss */
   a:visited {
-    color: #b2c1d1; }
-  /* line 26, ../sass/general.scss */
+    color: #56769e; }
+  /* line 32, ../sass/general.scss */
   a:hover {
     text-decoration: none;
-    color: #92a7be; }
+    border-bottom: 1px solid #56769e;
+    color: #445d7d; }
 
-/* line 32, ../sass/general.scss */
+/* line 39, ../sass/general.scss */
 :target {
   -webkit-animation: highlight 3s ease;
   -moz-animation: highlight 3s ease; }
 
 @-webkit-keyframes highlight {
-  /* line 38, ../sass/general.scss */
+  /* line 45, ../sass/general.scss */
   0% {
     background-color: transparent; }
 
-  /* line 39, ../sass/general.scss */
+  /* line 46, ../sass/general.scss */
   25% {
-    background-color: #363636; }
+    background-color: white; }
 
-  /* line 40, ../sass/general.scss */
+  /* line 47, ../sass/general.scss */
   100% {
     background-color: transparent; } }
 
 @-moz-keyframes highlight {
-  /* line 44, ../sass/general.scss */
+  /* line 51, ../sass/general.scss */
   0% {
     background-color: transparent; }
 
-  /* line 45, ../sass/general.scss */
+  /* line 52, ../sass/general.scss */
   25% {
-    background-color: #363636; }
+    background-color: white; }
 
-  /* line 46, ../sass/general.scss */
+  /* line 53, ../sass/general.scss */
   100% {
     background-color: transparent; } }
 
-/* line 50, ../sass/general.scss */
+/* line 57, ../sass/general.scss */
 div[id] {
   padding: 1em;
   border-radius: 5px; }
 
-/* line 55, ../sass/general.scss */
+/* line 62, ../sass/general.scss */
 h1 {
   margin: 0.5em auto 0;
   font-size: 4em;
   font-family: 'Raleway', sans-serif;
   font-weight: 100;
-  text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.9);
   text-decoration: none;
   text-align: center; }
-  /* line 64, ../sass/general.scss */
+  /* line 71, ../sass/general.scss */
   h1 a {
-    color: whitesmoke;
+    color: #4d4d4d;
     text-decoration: none; }
-    /* line 68, ../sass/general.scss */
+    /* line 75, ../sass/general.scss */
     h1 a:visited {
-      color: whitesmoke; }
-    /* line 72, ../sass/general.scss */
+      color: #4d4d4d; }
+    /* line 79, ../sass/general.scss */
     h1 a:hover {
-      border-bottom: #92a7be 1px dashed; }
+      border-bottom: #445d7d 1px dashed; }
   @media screen and (max-width: 500px) {
-    /* line 55, ../sass/general.scss */
+    /* line 62, ../sass/general.scss */
     h1 {
       font-size: 2.8em; } }
 
-/* line 82, ../sass/general.scss */
+/* line 89, ../sass/general.scss */
 h2 {
   font-size: 2.5em;
   text-align: center;
@@ -155,11 +159,11 @@ h2 {
   font-family: 'Raleway', sans-serif;
   font-weight: 100; }
   @media screen and (max-width: 500px) {
-    /* line 82, ../sass/general.scss */
+    /* line 89, ../sass/general.scss */
     h2 {
       font-size: 2.1em; } }
 
-/* line 94, ../sass/general.scss */
+/* line 101, ../sass/general.scss */
 h3 {
   font-size: 2em;
   text-align: center;
@@ -167,40 +171,40 @@ h3 {
   font-weight: 100;
   margin: 1.2em 0 0; }
 
-/* line 102, ../sass/general.scss */
+/* line 109, ../sass/general.scss */
 p {
   margin: 0 auto;
   margin-top: 0.8em;
   line-height: 22px; }
 
-/* line 108, ../sass/general.scss */
+/* line 115, ../sass/general.scss */
 dl {
   line-height: 22px; }
-  /* line 109, ../sass/general.scss */
+  /* line 116, ../sass/general.scss */
   dl dt {
     text-transform: uppercase;
     margin-top: 1em; }
-  /* line 114, ../sass/general.scss */
+  /* line 121, ../sass/general.scss */
   dl dd {
     padding-left: 2em; }
 
-/* line 121, ../sass/general.scss */
+/* line 128, ../sass/general.scss */
 ul {
   list-style: disc inside none;
   line-height: 22px; }
 
-/* line 126, ../sass/general.scss */
+/* line 133, ../sass/general.scss */
 ol {
   list-style: decimal outside none;
   margin-top: 0.5em;
   padding-left: 2em;
   line-height: 22px; }
 
-/* line 133, ../sass/general.scss */
+/* line 140, ../sass/general.scss */
 em {
   font-style: italic; }
 
-/* line 137, ../sass/general.scss */
+/* line 144, ../sass/general.scss */
 .updated {
   font-size: 0.7em;
   margin-top: 6em;
@@ -225,6 +229,7 @@ nav {
 
 /* line 18, ../sass/layouts.scss */
 .content {
+  border-top: 8px solid #954a4a;
   max-width: 1200px;
   width: 75%;
   float: left;
@@ -232,11 +237,11 @@ nav {
   margin-left: 25%;
   min-height: 100%;
   margin-bottom: 4em;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.2)), color-stop(100%, rgba(255, 255, 255, 0.3)));
-  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3));
-  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3));
-  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3));
-  background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.3)); }
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.9)), color-stop(100%, rgba(255, 255, 255, 0.8)));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)); }
   @media screen and (max-width: 700px) {
     /* line 18, ../sass/layouts.scss */
     .content {
@@ -247,7 +252,7 @@ nav {
     /* line 18, ../sass/layouts.scss */
     .content {
       padding: 0.5em;
-      background-color: #363636; } }
+      background-color: white; } }
 
 /* line 2, ../sass/piano.scss */
 .piano ul {
@@ -261,7 +266,7 @@ nav {
   height: 3em;
   border-bottom: 2px solid #000;
   display: block;
-  background-color: #e5e5e5;
+  background-color: white;
   position: relative;
   border-radius: 0 5px 5px 0;
   box-shadow: inset -1px -2px 4px #ffffff; }
@@ -270,24 +275,18 @@ nav {
     padding: 0.8em 1em 0 0;
     display: inline-block;
     text-decoration: none;
+    border-bottom: none;
     float: right;
     color: #7b7b7b; }
-  /* line 30, ../sass/piano.scss */
+  /* line 31, ../sass/piano.scss */
   .piano li.white.active {
-    box-shadow: inset 0px 0px 5px #000000;
-    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #eeeeee), color-stop(100%, #b5b5b5));
-    background-image: -webkit-linear-gradient(#eeeeee, #b5b5b5);
-    background-image: -moz-linear-gradient(#eeeeee, #b5b5b5);
-    background-image: -o-linear-gradient(#eeeeee, #b5b5b5);
-    background-image: linear-gradient(#eeeeee, #b5b5b5); }
-    /* line 35, ../sass/piano.scss */
-    .piano li.white.active span {
-      padding-right: 0.8em;
-      -webkit-transition: all 0.1s linear;
-      -moz-transition: all 0.1s linear;
-      -o-transition: all 0.1s linear;
-      transition: all 0.1s linear; }
-/* line 42, ../sass/piano.scss */
+    box-shadow: inset 0px 0px 3px #636363;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f6f6f6), color-stop(100%, #ededed));
+    background-image: -webkit-linear-gradient(#f6f6f6, #ededed);
+    background-image: -moz-linear-gradient(#f6f6f6, #ededed);
+    background-image: -o-linear-gradient(#f6f6f6, #ededed);
+    background-image: linear-gradient(#f6f6f6, #ededed); }
+/* line 38, ../sass/piano.scss */
 .piano li.black {
   width: 60%;
   height: 1.5em;
@@ -298,22 +297,22 @@ nav {
   z-index: 10;
   border-radius: 0 3px 3px 0;
   box-shadow: 0px -1px 0px black, 0px 1px 0px black, 1px 0px 0px black, inset 0px 1px 1px #565656, inset 0px -1px 1px #565656, inset -2px 0px 1px #565656; }
-  /* line 64, ../sass/piano.scss */
+  /* line 60, ../sass/piano.scss */
   .piano li.black span {
     padding-top: 1.2em; }
-  /* line 69, ../sass/piano.scss */
+  /* line 65, ../sass/piano.scss */
   .piano li.black.high:before {
     margin-top: -0.95em; }
-  /* line 73, ../sass/piano.scss */
+  /* line 69, ../sass/piano.scss */
   .piano li.black.high:after {
     margin-top: -1px; }
-  /* line 79, ../sass/piano.scss */
+  /* line 75, ../sass/piano.scss */
   .piano li.black.low:before {
     margin-top: -0.55em; }
-  /* line 83, ../sass/piano.scss */
+  /* line 79, ../sass/piano.scss */
   .piano li.black.low:after {
     margin-top: 5px; }
-  /* line 88, ../sass/piano.scss */
+  /* line 84, ../sass/piano.scss */
   .piano li.black.active {
     background-color: #101010;
     box-shadow: 0px -1px 0px #000; }

@@ -1,9 +1,10 @@
 // Text
-$link-color: #B2C1D1;
+$link-color: #56769e;
 $link-hover-color: darken($link-color, 10%);
-$background-color:#363636;
+$background-color: #ffffff;
 $heading-color:#ededed;
-$light-heading: #F5F5F5;
+//$light-heading: #F5F5F5;
+$light-heading: #4d4d4d;
 $content-text-size: 18px; // Only px unless the calc below is adjusted.
 $content-line-height: $content-text-size + 4px;
 
@@ -12,7 +13,7 @@ $bg-color: #e7e7e7;
 
 
 // Piano
-$white-key: #e5e5e5;
+$white-key: #ffffff;
 $black-key: #292929;
 $white-key-height: 3em;
 $black-key-height: $white-key-height * .5;

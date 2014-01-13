@@ -23,19 +23,15 @@
       padding:0.8em 1em 0 0;
       display: inline-block;
       text-decoration: none;
+      border-bottom: none;
       float: right;
       color:#7b7b7b;
     }
 
     &.active {
       // Yay for CSS3!
-      box-shadow: inset 0px 0px 5px #000000;
-      @include background-image(linear-gradient(#eeeeee, #b5b5b5));
-
-      span {
-        padding-right:0.8em;
-        @include transition(all 0.1s linear);
-      }
+      box-shadow: inset 0px 0px 3px #636363;
+      @include background-image(linear-gradient(#f6f6f6, #ededed));
     }
   }
 
