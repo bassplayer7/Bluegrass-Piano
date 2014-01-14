@@ -229,7 +229,7 @@ nav {
     nav {
       display: none; } }
 
-/* line 18, ../sass/layouts.scss */
+/* line 17, ../sass/layouts.scss */
 .content {
   border-top: 8px solid #954a4a;
   max-width: 1200px;
@@ -245,13 +245,13 @@ nav {
   background-image: -o-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
   background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)); }
   @media screen and (max-width: 700px) {
-    /* line 18, ../sass/layouts.scss */
+    /* line 17, ../sass/layouts.scss */
     .content {
       width: 100%;
       margin: 0 auto;
       padding: 5% 3em; } }
   @media screen and (max-width: 400px) {
-    /* line 18, ../sass/layouts.scss */
+    /* line 17, ../sass/layouts.scss */
     .content {
       padding: 0.5em;
       background-color: white; } }
@@ -260,8 +260,9 @@ nav {
 .piano ul {
   list-style: none;
   margin: 0;
-  padding: 0; }
-/* line 8, ../sass/piano.scss */
+  padding: 0;
+  opacity: 0.9; }
+/* line 9, ../sass/piano.scss */
 .piano li.white {
   width: 100%;
   min-width: 11.5em;
@@ -272,7 +273,7 @@ nav {
   position: relative;
   border-radius: 0 5px 5px 0;
   box-shadow: inset -1px -2px 4px #ffffff; }
-  /* line 22, ../sass/piano.scss */
+  /* line 23, ../sass/piano.scss */
   .piano li.white a {
     padding: 0.8em 1em 0 0;
     display: inline-block;
@@ -280,7 +281,7 @@ nav {
     border-bottom: none;
     float: right;
     color: #7b7b7b; }
-  /* line 31, ../sass/piano.scss */
+  /* line 32, ../sass/piano.scss */
   .piano li.white.active {
     box-shadow: inset 0px 0px 3px #636363;
     background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f6f6f6), color-stop(100%, #ededed));
@@ -288,7 +289,7 @@ nav {
     background-image: -moz-linear-gradient(#f6f6f6, #ededed);
     background-image: -o-linear-gradient(#f6f6f6, #ededed);
     background-image: linear-gradient(#f6f6f6, #ededed); }
-/* line 38, ../sass/piano.scss */
+/* line 39, ../sass/piano.scss */
 .piano li.black {
   width: 60%;
   height: 1.5em;
@@ -299,22 +300,22 @@ nav {
   z-index: 10;
   border-radius: 0 3px 3px 0;
   box-shadow: 0px -1px 0px black, 0px 1px 0px black, 1px 0px 0px black, inset 0px 1px 1px #565656, inset 0px -1px 1px #565656, inset -2px 0px 1px #565656; }
-  /* line 60, ../sass/piano.scss */
+  /* line 61, ../sass/piano.scss */
   .piano li.black span {
     padding-top: 1.2em; }
-  /* line 65, ../sass/piano.scss */
+  /* line 66, ../sass/piano.scss */
   .piano li.black.high:before {
     margin-top: -0.95em; }
-  /* line 69, ../sass/piano.scss */
+  /* line 70, ../sass/piano.scss */
   .piano li.black.high:after {
     margin-top: -1px; }
-  /* line 75, ../sass/piano.scss */
+  /* line 76, ../sass/piano.scss */
   .piano li.black.low:before {
     margin-top: -0.55em; }
-  /* line 79, ../sass/piano.scss */
+  /* line 80, ../sass/piano.scss */
   .piano li.black.low:after {
     margin-top: 5px; }
-  /* line 84, ../sass/piano.scss */
+  /* line 85, ../sass/piano.scss */
   .piano li.black.active {
     background-color: #101010;
     box-shadow: 0px -1px 0px #000; }

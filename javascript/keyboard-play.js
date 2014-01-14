@@ -62,6 +62,11 @@ var Navigation = function() {
         }
     };
 
+    base.visibleKeys = function() {
+        base.maxKeys = Math.round(document.childNodes[1].clientHeight / base.totalKeys);
+        console.log({some: navigation.pianoKey[32]});
+    };
+
     // This rounds the scrollY number so that it can be used to access values in the pianoKey array.
     // It will then add the "active" class to that specific key.
     // It saves the current key to the lastKey variable so it knows what was the last "active" tag.
@@ -73,7 +78,7 @@ var Navigation = function() {
         var keyCode = Math.round((window.scrollY/base.docHeight) * base.totalKeys),
             key = base.pianoKey[keyCode];
 
-        if (key !== undefined) {
+        if (key !== undefined  && keyCode <= base.maxKeys) {
             key.className += " active";
         }
 
@@ -83,10 +88,12 @@ var Navigation = function() {
     // This loads the functions.
     base.load = function() {
         base.lastKey = 0;
+        base.maxKeys = 15;
 
         base.findKeys();
         base.pressKeys();
 
+        window.addEventListener("resize", base.visibleKeys, true);
         window.addEventListener("scroll", base.pressKeys, true);
     };
 };
