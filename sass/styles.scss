@@ -3,14 +3,14 @@
  * Version 2.1
  */
 
-@import "reset";
+@import "compass/reset";
 
 @import "compass/css3";
 
-@import "variables";
+@import "_variables";
 
-@import "general";
+@import "_general";
 
-@import "layouts";
+@import "_layouts";
 
-@import "piano";
+@import "_navigation";

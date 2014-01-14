@@ -1,0 +1,62 @@
+// Text
+$link-color: #56769e;
+$link-hover-color: darken($link-color, 10%);
+$background-color: #ffffff;
+$heading-color:#ededed;
+//$light-heading: #F5F5F5;
+$light-heading: #4d4d4d;
+$content-text-size: 18px; // Only px unless the calc below is adjusted.
+$content-line-height: $content-text-size + 4px;
+
+// Style and Feel
+$bg-color: #e7e7e7;
+
+
+// Piano
+$white-key: #ffffff;
+$black-key: #292929;
+$white-key-height: 3em;
+$black-key-height: $white-key-height * .5;
+$black-key-position: -$black-key-height * .5;
+$black-key-high: $black-key-position - 0.2;
+$black-key-low: $black-key-position + 0.2;
+$black-key-outer-border: black;
+$black-key-inner-border: #565656;
+
+// Media Query support
+$piano: 1800px;
+$keyboard:1600px;
+$bass:1200px;
+$guitar:1000px;
+$banjo:800px;
+$mandolin:600px;
+$fiddle:400px;
+$shaker:320px;
+
+@mixin bp($point) {
+  @if $point == piano {
+    @media (max-width: $piano) { @content; }
+  }
+  @else if $point == $keyboard {
+    @media (max-width: $keyboard) { @content; }
+  }
+  @else if $point == $bass {
+    @media (max-width: $bass)  { @content; }
+  }
+  @else if $point == $guitar {
+    @media (max-width: $guitar) { @content; }
+  }
+  @else if $point == $banjo {
+    @media (max-width: $banjo)  { @content; }
+  }
+  @else if $point == $mandolin {
+    @media (max-width: $mandolin) { @content; }
+  }
+  @else if $point == $fiddle {
+    @media (max-width: $fiddle) { @content; }
+  }
+  @else if $point == $shaker {
+    @media (max-width: $shaker)  { @content; }
+  }
+
+}

@@ -2,11 +2,7 @@
  * Website designed and developed by Jesse Maxwell.
  * Version 2.1
  */
-/* http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-/* line 18, ../sass/reset.scss */
+/* line 17, ../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -23,149 +19,155 @@ time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 100%;
   font: inherit;
+  font-size: 100%;
   vertical-align: baseline; }
 
-/* HTML5 display-role reset for older browsers */
-/* line 28, ../sass/reset.scss */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-  display: block; }
-
-/* line 31, ../sass/reset.scss */
-body {
+/* line 22, ../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+html {
   line-height: 1; }
 
-/* line 34, ../sass/reset.scss */
+/* line 24, ../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 ol, ul {
   list-style: none; }
 
-/* line 37, ../sass/reset.scss */
-blockquote, q {
-  quotes: none; }
-
-/* line 41, ../sass/reset.scss */
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
-  content: none; }
-
-/* line 45, ../sass/reset.scss */
+/* line 26, ../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+/* line 28, ../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle; }
+
+/* line 30, ../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+q, blockquote {
+  quotes: none; }
+  /* line 103, ../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+  q:before, q:after, blockquote:before, blockquote:after {
+    content: "";
+    content: none; }
+
+/* line 32, ../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+a img {
+  border: none; }
+
+/* line 116, ../../../../../Applications/CodeKit.app/Contents/Resources/engines/compass/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+  display: block; }
+
 /* ======== Overall Styles ======== */
-/* line 2, ../sass/general.scss */
+/* line 2, ../sass/_general.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
-/* line 6, ../sass/general.scss */
+/* line 6, ../sass/_general.scss */
 html {
   height: 100%; }
 
-/* line 10, ../sass/general.scss */
+/* line 10, ../sass/_general.scss */
 body {
   font-family: 'Lato', sans-serif;
   color: #4d4d4d;
   font-weight: 300;
   text-align: left;
   font-size: 18px; }
-  @media (min-width: 400px) {
-    /* line 10, ../sass/general.scss */
+  @media (min-width: 800px) {
+    /* line 10, ../sass/_general.scss */
     body {
       background: url("../images/bg-keys.jpg") center center no-repeat white;
       background-attachment: fixed; } }
 
-/* line 22, ../sass/general.scss */
+/* line 22, ../sass/_general.scss */
 a {
   color: #56769e;
   text-decoration: none;
   border-bottom: 1px dashed #56769e; }
-  /* line 27, ../sass/general.scss */
+  /* line 27, ../sass/_general.scss */
   a:visited {
     color: #56769e; }
-  /* line 31, ../sass/general.scss */
+  /* line 31, ../sass/_general.scss */
   a:hover {
     text-decoration: none;
     border-bottom: 1px solid #56769e;
     color: #445d7d; }
 
-/* line 38, ../sass/general.scss */
+/* line 38, ../sass/_general.scss */
 :target {
   -webkit-animation: highlight 3s ease;
   -moz-animation: highlight 3s ease; }
 
 @-webkit-keyframes highlight {
-  /* line 44, ../sass/general.scss */
+  /* line 44, ../sass/_general.scss */
   0% {
     background-color: transparent; }
 
-  /* line 45, ../sass/general.scss */
+  /* line 45, ../sass/_general.scss */
   25% {
     background-color: white; }
 
-  /* line 46, ../sass/general.scss */
+  /* line 46, ../sass/_general.scss */
   100% {
     background-color: transparent; } }
 
 @-moz-keyframes highlight {
-  /* line 50, ../sass/general.scss */
+  /* line 50, ../sass/_general.scss */
   0% {
     background-color: transparent; }
 
-  /* line 51, ../sass/general.scss */
+  /* line 51, ../sass/_general.scss */
   25% {
     background-color: white; }
 
-  /* line 52, ../sass/general.scss */
+  /* line 52, ../sass/_general.scss */
   100% {
     background-color: transparent; } }
 
-/* line 56, ../sass/general.scss */
+/* line 56, ../sass/_general.scss */
 div[id] {
   padding: 1em;
   border-radius: 5px; }
 
-/* line 61, ../sass/general.scss */
+/* line 61, ../sass/_general.scss */
 h1 {
   margin: 0.5em auto 0;
   font-size: 4em;
   font-family: 'Raleway', sans-serif;
   font-weight: 100;
   text-align: center; }
-  /* line 69, ../sass/general.scss */
+  /* line 69, ../sass/_general.scss */
   h1 a {
     color: #4d4d4d;
     text-decoration: none;
     border-bottom: 0; }
-    /* line 74, ../sass/general.scss */
+    /* line 74, ../sass/_general.scss */
     h1 a:visited {
       color: #4d4d4d; }
-    /* line 78, ../sass/general.scss */
+    /* line 78, ../sass/_general.scss */
     h1 a:hover {
       border-bottom: #445d7d 1px dashed; }
-  @media screen and (max-width: 500px) {
-    /* line 61, ../sass/general.scss */
+  @media screen and (max-width: 1000px) {
+    /* line 61, ../sass/_general.scss */
     h1 {
       font-size: 2.8em; } }
 
-/* line 88, ../sass/general.scss */
+/* line 88, ../sass/_general.scss */
 h2 {
   font-size: 2.5em;
   text-align: center;
   margin: 1.2em 0 0;
   font-family: 'Raleway', sans-serif;
   font-weight: 100; }
-  @media screen and (max-width: 500px) {
-    /* line 88, ../sass/general.scss */
+  @media screen and (max-width: 1000px) {
+    /* line 88, ../sass/_general.scss */
     h2 {
       font-size: 2.1em; } }
 
-/* line 100, ../sass/general.scss */
+/* line 100, ../sass/_general.scss */
 h3 {
   font-size: 2em;
   text-align: center;
@@ -173,40 +175,40 @@ h3 {
   font-weight: 100;
   margin: 1.2em 0 0; }
 
-/* line 108, ../sass/general.scss */
+/* line 108, ../sass/_general.scss */
 p {
   margin: 0 auto;
   margin-top: 0.8em;
   line-height: 22px; }
 
-/* line 114, ../sass/general.scss */
+/* line 114, ../sass/_general.scss */
 dl {
   line-height: 22px; }
-  /* line 115, ../sass/general.scss */
+  /* line 115, ../sass/_general.scss */
   dl dt {
     text-transform: uppercase;
     margin-top: 1em; }
-  /* line 120, ../sass/general.scss */
+  /* line 120, ../sass/_general.scss */
   dl dd {
     padding-left: 2em; }
 
-/* line 127, ../sass/general.scss */
+/* line 127, ../sass/_general.scss */
 ul {
   list-style: disc inside none;
   line-height: 22px; }
 
-/* line 132, ../sass/general.scss */
+/* line 132, ../sass/_general.scss */
 ol {
   list-style: decimal outside none;
   margin-top: 0.5em;
   padding-left: 2em;
   line-height: 22px; }
 
-/* line 139, ../sass/general.scss */
+/* line 139, ../sass/_general.scss */
 em {
   font-style: italic; }
 
-/* line 143, ../sass/general.scss */
+/* line 143, ../sass/_general.scss */
 .updated {
   font-size: 0.7em;
   margin-top: 6em;
@@ -214,22 +216,22 @@ em {
   display: block; }
 
 /* ======== Layouts ======== */
-/* line 2, ../sass/layouts.scss */
+/* line 2, ../sass/_layouts.scss */
 nav {
   float: left;
   width: 20%;
   min-width: 2em;
   position: absolute; }
-  @media screen and (min-height: 700px) {
-    /* line 2, ../sass/layouts.scss */
+  @media screen and (min-height: 1600px) {
+    /* line 2, ../sass/_layouts.scss */
     nav {
       position: fixed; } }
-  @media screen and (max-width: 700px) {
-    /* line 2, ../sass/layouts.scss */
+  @media screen and (max-width: 1600px) {
+    /* line 2, ../sass/_layouts.scss */
     nav {
       display: none; } }
 
-/* line 17, ../sass/layouts.scss */
+/* line 17, ../sass/_layouts.scss */
 .content {
   border-top: 8px solid #954a4a;
   max-width: 1200px;
@@ -244,78 +246,14 @@ nav {
   background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
   background-image: -o-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
   background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)); }
-  @media screen and (max-width: 700px) {
-    /* line 17, ../sass/layouts.scss */
+  @media screen and (max-width: 1600px) {
+    /* line 17, ../sass/_layouts.scss */
     .content {
       width: 100%;
       margin: 0 auto;
       padding: 5% 3em; } }
-  @media screen and (max-width: 400px) {
-    /* line 17, ../sass/layouts.scss */
+  @media screen and (max-width: 800px) {
+    /* line 17, ../sass/_layouts.scss */
     .content {
       padding: 0.5em;
       background-color: white; } }
-
-/* line 2, ../sass/piano.scss */
-.piano ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  opacity: 0.9; }
-/* line 9, ../sass/piano.scss */
-.piano li.white {
-  width: 100%;
-  min-width: 11.5em;
-  height: 3em;
-  border-bottom: 2px solid #000;
-  display: block;
-  background-color: white;
-  position: relative;
-  border-radius: 0 5px 5px 0;
-  box-shadow: inset -1px -2px 4px #ffffff; }
-  /* line 23, ../sass/piano.scss */
-  .piano li.white a {
-    padding: 0.8em 1em 0 0;
-    display: inline-block;
-    text-decoration: none;
-    border-bottom: none;
-    float: right;
-    color: #7b7b7b; }
-  /* line 32, ../sass/piano.scss */
-  .piano li.white.active {
-    box-shadow: inset 0px 0px 3px #636363;
-    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #f6f6f6), color-stop(100%, #ededed));
-    background-image: -webkit-linear-gradient(#f6f6f6, #ededed);
-    background-image: -moz-linear-gradient(#f6f6f6, #ededed);
-    background-image: -o-linear-gradient(#f6f6f6, #ededed);
-    background-image: linear-gradient(#f6f6f6, #ededed); }
-/* line 39, ../sass/piano.scss */
-.piano li.black {
-  width: 60%;
-  height: 1.5em;
-  display: block;
-  background-color: #292929;
-  position: absolute;
-  margin-top: -0.75em;
-  z-index: 10;
-  border-radius: 0 3px 3px 0;
-  box-shadow: 0px -1px 0px black, 0px 1px 0px black, 1px 0px 0px black, inset 0px 1px 1px #565656, inset 0px -1px 1px #565656, inset -2px 0px 1px #565656; }
-  /* line 61, ../sass/piano.scss */
-  .piano li.black span {
-    padding-top: 1.2em; }
-  /* line 66, ../sass/piano.scss */
-  .piano li.black.high:before {
-    margin-top: -0.95em; }
-  /* line 70, ../sass/piano.scss */
-  .piano li.black.high:after {
-    margin-top: -1px; }
-  /* line 76, ../sass/piano.scss */
-  .piano li.black.low:before {
-    margin-top: -0.55em; }
-  /* line 80, ../sass/piano.scss */
-  .piano li.black.low:after {
-    margin-top: 5px; }
-  /* line 85, ../sass/piano.scss */
-  .piano li.black.active {
-    background-color: #101010;
-    box-shadow: 0px -1px 0px #000; }
