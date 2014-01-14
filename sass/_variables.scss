@@ -23,6 +23,13 @@ $black-key-low: $black-key-position + 0.2;
 $black-key-outer-border: black;
 $black-key-inner-border: #565656;
 
+// General, overall settings
+$u: 10px;
+
+@function u($input:1) {
+  @return $u * $input;
+}
+
 // Media Query support
 $piano: 1800px;
 $keyboard:1600px;
@@ -32,31 +39,33 @@ $banjo:800px;
 $mandolin:600px;
 $fiddle:400px;
 $shaker:320px;
+// Allows for setting min-width
+$min: min-width;
 
-@mixin bp($point) {
+@mixin bp($point, $min-max: max-width) {
   @if $point == piano {
-    @media (max-width: $piano) { @content; }
+    @media ($min-max: $piano) { @content; }
   }
   @else if $point == $keyboard {
-    @media (max-width: $keyboard) { @content; }
+    @media ($min-max: $keyboard) { @content; }
   }
   @else if $point == $bass {
-    @media (max-width: $bass)  { @content; }
+    @media ($min-max: $bass)  { @content; }
   }
   @else if $point == $guitar {
-    @media (max-width: $guitar) { @content; }
+    @media ($min-max: $guitar) { @content; }
   }
   @else if $point == $banjo {
-    @media (max-width: $banjo)  { @content; }
+    @media ($min-max: $banjo)  { @content; }
   }
   @else if $point == $mandolin {
-    @media (max-width: $mandolin) { @content; }
+    @media ($min-max: $mandolin) { @content; }
   }
   @else if $point == $fiddle {
-    @media (max-width: $fiddle) { @content; }
+    @media ($min-max: $fiddle) { @content; }
   }
   @else if $point == $shaker {
-    @media (max-width: $shaker)  { @content; }
+    @media ($min-max: $shaker)  { @content; }
   }
 
 }

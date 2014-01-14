@@ -134,7 +134,7 @@ div[id] {
 
 /* line 61, ../sass/_general.scss */
 h1 {
-  margin: 0.5em auto 0;
+  margin: 1.2em auto 0;
   font-size: 4em;
   font-family: 'Raleway', sans-serif;
   font-weight: 100;
@@ -218,42 +218,75 @@ em {
 /* ======== Layouts ======== */
 /* line 2, ../sass/_layouts.scss */
 nav {
-  float: left;
-  width: 20%;
-  min-width: 2em;
-  position: absolute; }
-  @media screen and (min-height: 1600px) {
-    /* line 2, ../sass/_layouts.scss */
-    nav {
-      position: fixed; } }
-  @media screen and (max-width: 1600px) {
-    /* line 2, ../sass/_layouts.scss */
-    nav {
-      display: none; } }
-
-/* line 17, ../sass/_layouts.scss */
-.content {
+  width: 100%;
+  position: fixed;
+  text-align: justify;
   border-top: 8px solid #954a4a;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.9)), color-stop(100%, rgba(255, 255, 255, 0.95)));
+  background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.95));
+  background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.95));
+  background-image: -o-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.95));
+  background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.95)); }
+  /* line 9, ../sass/_layouts.scss */
+  nav div {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: justify; }
+    /* line 14, ../sass/_layouts.scss */
+    nav div span#underline {
+      position: absolute;
+      bottom: 8px;
+      left: 0;
+      width: 100px;
+      height: 2px;
+      background: #954a4a;
+      display: none; }
+  /* line 25, ../sass/_layouts.scss */
+  nav ul {
+    width: 100%;
+    text-align: justify;
+    height: 65px; }
+    /* line 30, ../sass/_layouts.scss */
+    nav ul li {
+      display: inline-block;
+      list-style: none;
+      margin-top: 10px; }
+      /* line 35, ../sass/_layouts.scss */
+      nav ul li a {
+        border-bottom: none;
+        display: inline-block;
+        padding: 10px; }
+        /* line 40, ../sass/_layouts.scss */
+        nav ul li a:hover {
+          text-decoration: none;
+          border-bottom: none; }
+        /* line 45, ../sass/_layouts.scss */
+        nav ul li a.active {
+          border-radius: 4px;
+          background-color: #e7e7e7; }
+    /* line 53, ../sass/_layouts.scss */
+    nav ul:after {
+      content: "";
+      display: inline-block;
+      width: 100%; }
+
+/* line 61, ../sass/_layouts.scss */
+.content {
   max-width: 1200px;
-  width: 75%;
-  float: left;
-  padding: 0 10% 4em;
-  margin-left: 25%;
+  margin: 0 auto 4em;
+  padding: 2em 10% 4em;
   min-height: 100%;
-  margin-bottom: 4em;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.9)), color-stop(100%, rgba(255, 255, 255, 0.8)));
   background-image: -webkit-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
   background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
   background-image: -o-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
   background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)); }
-  @media screen and (max-width: 1600px) {
-    /* line 17, ../sass/_layouts.scss */
+  @media (max-width: 1200px) {
+    /* line 61, ../sass/_layouts.scss */
     .content {
-      width: 100%;
-      margin: 0 auto;
-      padding: 5% 3em; } }
-  @media screen and (max-width: 800px) {
-    /* line 17, ../sass/_layouts.scss */
+      max-width: 80%; } }
+  @media (max-width: 400px) {
+    /* line 61, ../sass/_layouts.scss */
     .content {
       padding: 0.5em;
       background-color: white; } }

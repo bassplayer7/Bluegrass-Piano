@@ -1,38 +1,78 @@
 /* ======== Layouts ======== */
 nav {
-  float:left;
-  width:20%;
-  min-width:2em;
-  position: absolute;
+  width: 100%;
+  position: fixed;
+  text-align: justify;
+  border-top: 8px solid #954a4a;
+  @include background-image(linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.95)));
 
-  @media screen and (min-height:$keyboard) {
-    position:fixed;
+  div {
+    max-width: $bass;
+    margin: 0 auto;
+    text-align: justify;
+
+    span#underline {
+      position: absolute;
+      bottom: 8px;
+      left:0;
+      width:100px;
+      height: 2px;
+      background: #954a4a;
+      display: none;
+    }
   }
 
-  @media screen and (max-width: $keyboard) {
-    display: none;
+  ul {
+    width: 100%;
+    text-align: justify;
+    height: 65px;
+
+    li {
+      display: inline-block;
+      list-style: none;
+      margin-top: $u;
+
+      a {
+        border-bottom: none;
+        display: inline-block;
+        padding: u(1);
+
+        &:hover {
+          text-decoration: none;
+          border-bottom: none;
+        }
+
+        &.active {
+          border-radius: 4px;
+          background-color: $bg-color;
+        }
+
+      }
+    }
+
+    &:after {
+      content: "";
+      display: inline-block;
+      width:100%;
+    }
   }
 }
 
 .content {
-  border-top: 8px solid #954a4a;
-  max-width:1200px;
-  width:75%;
-  float: left;
-  padding:0 10% 4em;
-  margin-left:25%;
+  max-width:$bass;
+  margin: 0 auto 4em;
+
+  padding:2em 10% 4em;
   min-height: 100%;
-  margin-bottom:4em;
 
   @include background-image(linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)));
 
-  @media screen and (max-width: $keyboard) {
-    width: 100%;
-    margin: 0 auto;
-    padding: 5% 3em;
+
+  @include bp($bass) {
+    max-width: 80%;
   }
 
-  @media screen and (max-width: $banjo) {
+  @include bp($fiddle) {
     padding: 0.5em;
     background-color: $background-color;
   }

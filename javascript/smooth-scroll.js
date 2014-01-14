@@ -17,7 +17,7 @@ var Scrolling = function() {
 
     base.elmYPosition = function(eID) {
         var elm = document.getElementById(eID);
-        var y = elm.offsetTop;
+        var y = elm.offsetTop - navigation.navBar.clientHeight;
         var node = elm;
         while (node.offsetParent && node.offsetParent != document.body) {
             node = node.offsetParent;
