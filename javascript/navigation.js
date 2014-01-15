@@ -3,11 +3,40 @@
  */
 var Navigation = function() {
     var base = this;
+
     base.navBar = document.getElementById("navigation");
     base.navElements = base.navBar.getElementsByTagName('li');
+    base.pageContent = document.getElementById("page-content");
+    base.everything = document.getElementById('nav-and-content');
     base.currentItem = document.getElementById("underline");
     base.docHeight = document.childNodes[1].scrollHeight - document.childNodes[1].clientHeight;
     base.windowHeight = document.childNodes[1].clientHeight;
+    base.menuIcon = document.getElementById('toggle-menu');
+    base.windowWidth = document.childNodes[1].clientWidth;
+
+    base.openMenu = function() {
+        base.pageContent.style.left = (base.windowWidth * 0.8) + "px";
+        base.menuIcon.style.left = base.pageContent.style.left;
+        base.pageContent.addEventListener("click", base.closeMenu, true);
+    };
+
+    base.closeMenu = function() {
+        base.pageContent.style.left = 0;
+        base.menuIcon.style.left = "10px";
+    };
+
+    base.finishMenuDrag = function() {
+        // decide if the touch was opening or closing the menu.
+        if (base.currentXCoords <= base.previousXCoords) {
+            base.closeMenu();
+            base.previousXCoords = base.currentXCoords;
+            base.xCoords = [];
+        } else {
+            base.openMenu();
+            base.previousXCoords = base.currentXCoords;
+            base.xCoords = [];
+        }
+    };
 
     base.addActive = function(e) {
         e.target.className += " active";
@@ -35,11 +64,10 @@ var Navigation = function() {
     };
 
     base.findMatches = function() {
-        var destinationIds = document.querySelectorAll('div[id]'),
+        var destinationIds = document.getElementsByClassName('destination'),
             sourceLinks = base.navBar.getElementsByTagName('a');
 
-        var i = 0;
-        for (; i < destinationIds.length; i++) {
+        for (var i = 0, j = destinationIds.length; i < j; i++) {
             if (destinationIds[i].id === sourceLinks[i].hash.substr(1)) {
                 base.trueArray.push(destinationIds[i].offsetTop);
             }
@@ -63,14 +91,51 @@ var Navigation = function() {
     base.initialUnderline = function() {
         base.currentItem.style.width = base.navElements[0].clientWidth + "px";
         base.currentItem.style.left = base.navElements[0].offsetLeft + "px";
+        // Turns on the underline span so that it displays on compatible (modern) browsers.
         base.currentItem.style.display = "block";
+    };
+
+    base.smallNavSize = function() {
+        base.navBar.style.height = base.windowHeight + "px";
+        base.everything.style.height = base.docHeight + "px";
+    };
+
+    base.dragMenu = function(e) {
+        base.xCoords.push(e.changedTouches[0].clientX);
+        console.log(e.changedTouches[0].touchIdentifier);
+        if (base.xCoords[0] > (base.xCoords[base.xCoords.length - 1] - 50)) {
+            base.currentXCoords = e.changedTouches[0].clientX;
+            base.pageContent.style.left = base.currentXCoords + "px";
+            base.menuIcon.style.left = base.currentXCoords + "10px";
+            base.pageContent.addEventListener("touchend", base.finishMenuDrag, true);
+        }
+    };
+
+    base.touchSmallNav = function() {
+        base.pageContent.addEventListener("touchmove", base.dragMenu, true);
+
+        for (var i = 0, j = base.navElements.length; i < j; i++) {
+            base.navElements[i].childNodes[0].addEventListener("click", base.closeMenu, true);
+        }
     };
 
     base.load = function() {
         base.trueArray = [];
-        base.findElements();
-        base.initialUnderline();
-        base.findMatches();
+
+        if (document.childNodes[1].clientWidth >= 800) {
+            // Full screen functions
+            base.findElements();
+            base.initialUnderline();
+            base.findMatches();
+        } else {
+            // Small screen functions.
+            base.smallNavSize();
+            base.previousXCoords = 0;
+            base.currentXCoords = 0;
+            base.xCoords = [];
+            base.pageContent.addEventListener("touchstart", base.touchSmallNav, true);
+            base.menuIcon.addEventListener("click", base.openMenu, true);
+        }
 
         window.addEventListener("scroll", base.scrollLinks, true);
     };

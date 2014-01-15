@@ -53,9 +53,11 @@ a {
 }
 
 // This styles any div with any id so that it looks nice when targeted by an on-page link.
-div[id] {
-  padding:1em;
-  border-radius: 5px;
+@include bp($banjo, min-width) {
+  div[id] {
+    padding:1em;
+    border-radius: 5px;
+  }
 }
 
 h1 {

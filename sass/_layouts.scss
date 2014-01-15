@@ -1,10 +1,23 @@
 /* ======== Layouts ======== */
+div.page {
+  @include bp($banjo) {
+    width: 100%;
+    position: relative;
+    overflow-x: scroll;
+  }
+}
+
 nav {
   width: 100%;
   position: fixed;
   text-align: justify;
   border-top: 8px solid #954a4a;
   @include background-image(linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.95)));
+
+  @include bp($banjo) {
+    background: $small-nav-bg;
+    z-index: 0;
+  }
 
   div {
     max-width: $bass;
@@ -20,6 +33,15 @@ nav {
       background: #954a4a;
       display: none;
       @include transition(linear, 400ms);
+    }
+
+    @include bp($bass) {
+      max-width: 80%;
+    }
+
+    @include bp($banjo) {
+      width: 100%;
+      max-width: 100%;
     }
   }
 
@@ -48,9 +70,35 @@ nav {
           background-color: $bg-color;
         }
 
+        @include bp($guitar) {
+          padding: u(0.4);
+        }
+
+        @include bp($banjo) {
+          color: $small-nav-text-color;
+          padding: u(1.2) u(0) u(1.2) u(2.5);
+
+          &:visited,
+          &:hover {
+            color: $small-nav-text-color;
+          }
+        }
+      }
+
+      // li
+      @include bp($banjo) {
+        display: block;
+        margin: 0;
+        border-bottom: 1px $black-key solid;
       }
     }
 
+    // ul
+    @include bp($guitar) {
+      height: 80px;
+    }
+
+    // make sure the menu items remain justified.
     &:after {
       content: "";
       display: inline-block;
@@ -59,9 +107,23 @@ nav {
   }
 }
 
+// SVG
+.menu-icon {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  top: u();
+  left: u();
+
+  @include bp($banjo) {
+    display: block;
+  }
+}
+
 .content {
   max-width:$bass;
   margin: 0 auto 4em;
+  z-index: 2;
 
   padding:2em 10% 4em;
   min-height: 100%;
@@ -76,5 +138,11 @@ nav {
   @include bp($fiddle) {
     padding: 0.5em;
     background-color: $background-color;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  @include bp($banjo) {
+    position: relative;
   }
 }

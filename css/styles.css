@@ -127,35 +127,35 @@ a {
   100% {
     background-color: transparent; } }
 
-/* line 56, ../sass/_general.scss */
-div[id] {
-  padding: 1em;
-  border-radius: 5px; }
-
-/* line 61, ../sass/_general.scss */
+@media (min-width: 800px) {
+  /* line 57, ../sass/_general.scss */
+  div[id] {
+    padding: 1em;
+    border-radius: 5px; } }
+/* line 63, ../sass/_general.scss */
 h1 {
   margin: 1.2em auto 0;
   font-size: 4em;
   font-family: 'Raleway', sans-serif;
   font-weight: 100;
   text-align: center; }
-  /* line 69, ../sass/_general.scss */
+  /* line 71, ../sass/_general.scss */
   h1 a {
     color: #4d4d4d;
     text-decoration: none;
     border-bottom: 0; }
-    /* line 74, ../sass/_general.scss */
+    /* line 76, ../sass/_general.scss */
     h1 a:visited {
       color: #4d4d4d; }
-    /* line 78, ../sass/_general.scss */
+    /* line 80, ../sass/_general.scss */
     h1 a:hover {
       border-bottom: #445d7d 1px dashed; }
   @media screen and (max-width: 1000px) {
-    /* line 61, ../sass/_general.scss */
+    /* line 63, ../sass/_general.scss */
     h1 {
       font-size: 2.8em; } }
 
-/* line 88, ../sass/_general.scss */
+/* line 90, ../sass/_general.scss */
 h2 {
   font-size: 2.5em;
   text-align: center;
@@ -163,11 +163,11 @@ h2 {
   font-family: 'Raleway', sans-serif;
   font-weight: 100; }
   @media screen and (max-width: 1000px) {
-    /* line 88, ../sass/_general.scss */
+    /* line 90, ../sass/_general.scss */
     h2 {
       font-size: 2.1em; } }
 
-/* line 100, ../sass/_general.scss */
+/* line 102, ../sass/_general.scss */
 h3 {
   font-size: 2em;
   text-align: center;
@@ -175,40 +175,40 @@ h3 {
   font-weight: 100;
   margin: 1.2em 0 0; }
 
-/* line 108, ../sass/_general.scss */
+/* line 110, ../sass/_general.scss */
 p {
   margin: 0 auto;
   margin-top: 0.8em;
   line-height: 22px; }
 
-/* line 114, ../sass/_general.scss */
+/* line 116, ../sass/_general.scss */
 dl {
   line-height: 22px; }
-  /* line 115, ../sass/_general.scss */
+  /* line 117, ../sass/_general.scss */
   dl dt {
     text-transform: uppercase;
     margin-top: 1em; }
-  /* line 120, ../sass/_general.scss */
+  /* line 122, ../sass/_general.scss */
   dl dd {
     padding-left: 2em; }
 
-/* line 127, ../sass/_general.scss */
+/* line 129, ../sass/_general.scss */
 ul {
   list-style: disc inside none;
   line-height: 22px; }
 
-/* line 132, ../sass/_general.scss */
+/* line 134, ../sass/_general.scss */
 ol {
   list-style: decimal outside none;
   margin-top: 0.5em;
   padding-left: 2em;
   line-height: 22px; }
 
-/* line 139, ../sass/_general.scss */
+/* line 141, ../sass/_general.scss */
 em {
   font-style: italic; }
 
-/* line 143, ../sass/_general.scss */
+/* line 145, ../sass/_general.scss */
 .updated {
   font-size: 0.7em;
   margin-top: 6em;
@@ -216,7 +216,14 @@ em {
   display: block; }
 
 /* ======== Layouts ======== */
-/* line 2, ../sass/_layouts.scss */
+@media (max-width: 800px) {
+  /* line 2, ../sass/_layouts.scss */
+  div.page {
+    width: 100%;
+    position: relative;
+    overflow-x: scroll; } }
+
+/* line 10, ../sass/_layouts.scss */
 nav {
   width: 100%;
   position: fixed;
@@ -227,12 +234,17 @@ nav {
   background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.95));
   background-image: -o-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.95));
   background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.95)); }
-  /* line 9, ../sass/_layouts.scss */
+  @media (max-width: 800px) {
+    /* line 10, ../sass/_layouts.scss */
+    nav {
+      background: #414141;
+      z-index: 0; } }
+  /* line 22, ../sass/_layouts.scss */
   nav div {
     max-width: 1200px;
     margin: 0 auto;
     text-align: justify; }
-    /* line 14, ../sass/_layouts.scss */
+    /* line 27, ../sass/_layouts.scss */
     nav div span#underline {
       position: absolute;
       bottom: 8px;
@@ -245,39 +257,83 @@ nav {
       -moz-transition: linear, 400ms;
       -o-transition: linear, 400ms;
       transition: linear, 400ms; }
-  /* line 26, ../sass/_layouts.scss */
+    @media (max-width: 1200px) {
+      /* line 22, ../sass/_layouts.scss */
+      nav div {
+        max-width: 80%; } }
+    @media (max-width: 800px) {
+      /* line 22, ../sass/_layouts.scss */
+      nav div {
+        width: 100%;
+        max-width: 100%; } }
+  /* line 48, ../sass/_layouts.scss */
   nav ul {
     width: 100%;
     text-align: justify;
     height: 65px; }
-    /* line 31, ../sass/_layouts.scss */
+    /* line 53, ../sass/_layouts.scss */
     nav ul li {
       display: inline-block;
       list-style: none;
       margin-top: 10px; }
-      /* line 36, ../sass/_layouts.scss */
+      /* line 58, ../sass/_layouts.scss */
       nav ul li a {
         border-bottom: none;
         display: inline-block;
         padding: 10px; }
-        /* line 41, ../sass/_layouts.scss */
+        /* line 63, ../sass/_layouts.scss */
         nav ul li a:hover {
           text-decoration: none;
           border-bottom: none; }
-        /* line 46, ../sass/_layouts.scss */
+        /* line 68, ../sass/_layouts.scss */
         nav ul li a.active {
           border-radius: 4px;
           background-color: #e7e7e7; }
-    /* line 54, ../sass/_layouts.scss */
+        @media (max-width: 1000px) {
+          /* line 58, ../sass/_layouts.scss */
+          nav ul li a {
+            padding: 4px; } }
+        @media (max-width: 800px) {
+          /* line 58, ../sass/_layouts.scss */
+          nav ul li a {
+            color: #ededed;
+            padding: 12px 0px 12px 25px; }
+            /* line 82, ../sass/_layouts.scss */
+            nav ul li a:visited, nav ul li a:hover {
+              color: #ededed; } }
+      @media (max-width: 800px) {
+        /* line 53, ../sass/_layouts.scss */
+        nav ul li {
+          display: block;
+          margin: 0;
+          border-bottom: 1px #292929 solid; } }
+    @media (max-width: 1000px) {
+      /* line 48, ../sass/_layouts.scss */
+      nav ul {
+        height: 80px; } }
+    /* line 102, ../sass/_layouts.scss */
     nav ul:after {
       content: "";
       display: inline-block;
       width: 100%; }
 
-/* line 62, ../sass/_layouts.scss */
+/* line 111, ../sass/_layouts.scss */
+.menu-icon {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  top: 10px;
+  left: 10px; }
+  @media (max-width: 800px) {
+    /* line 111, ../sass/_layouts.scss */
+    .menu-icon {
+      display: block; } }
+
+/* line 123, ../sass/_layouts.scss */
 .content {
   max-width: 1200px;
   margin: 0 auto 4em;
+  z-index: 2;
   padding: 2em 10% 4em;
   min-height: 100%;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, rgba(255, 255, 255, 0.9)), color-stop(100%, rgba(255, 255, 255, 0.8)));
@@ -286,11 +342,17 @@ nav {
   background-image: -o-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
   background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)); }
   @media (max-width: 1200px) {
-    /* line 62, ../sass/_layouts.scss */
+    /* line 123, ../sass/_layouts.scss */
     .content {
       max-width: 80%; } }
   @media (max-width: 400px) {
-    /* line 62, ../sass/_layouts.scss */
+    /* line 123, ../sass/_layouts.scss */
     .content {
       padding: 0.5em;
-      background-color: white; } }
+      background-color: white;
+      max-width: 100%;
+      width: 100%; } }
+  @media (max-width: 800px) {
+    /* line 123, ../sass/_layouts.scss */
+    .content {
+      position: relative; } }
