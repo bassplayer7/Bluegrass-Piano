@@ -17,7 +17,7 @@ var Scrolling = function() {
 
     base.elmYPosition = function(eID) {
         var elm = document.getElementById(eID);
-        var y = elm.offsetTop - navigation.navBar.clientHeight;
+        var y = elm.offsetTop;
         var node = elm;
         while (node.offsetParent && node.offsetParent != document.body) {
             node = node.offsetParent;
@@ -28,9 +28,10 @@ var Scrolling = function() {
     base.smoothScroll = function(evt) {
         var eID = evt.toElement.hash.substr(1);
         var startY = base.currentYPosition();
-        var stopY = base.elmYPosition(eID);
+        var stopY = base.elmYPosition(eID) - navigation.navBar.clientHeight;
+        console.log(stopY);
         var distance = stopY > startY ? stopY - startY : startY - stopY;
-        if (distance < 100) {
+        if (distance < 150) {
             scrollTo(0, stopY); return;
         }
         var speed = Math.round(distance / 100);

@@ -129,7 +129,7 @@ a {
 
 @media (min-width: 800px) {
   /* line 57, ../sass/_general.scss */
-  div[id] {
+  div[id]:target {
     padding: 1em;
     border-radius: 5px; } }
 /* line 63, ../sass/_general.scss */

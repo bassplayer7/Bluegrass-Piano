@@ -54,7 +54,7 @@ a {
 
 // This styles any div with any id so that it looks nice when targeted by an on-page link.
 @include bp($banjo, min-width) {
-  div[id] {
+  div[id]:target {
     padding:1em;
     border-radius: 5px;
   }

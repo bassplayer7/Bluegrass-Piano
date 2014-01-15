@@ -64,12 +64,9 @@ var Navigation = function() {
     };
 
     base.findMatches = function() {
-        var destinationIds = document.getElementsByClassName('destination'),
-            sourceLinks = base.navBar.getElementsByTagName('a');
-
-        for (var i = 0, j = destinationIds.length; i < j; i++) {
-            if (destinationIds[i].id === sourceLinks[i].hash.substr(1)) {
-                base.trueArray.push(destinationIds[i].offsetTop);
+        for (var i = 0, j = base.destinationIds.length; i < j; i++) {
+            if (base.destinationIds[i].id === base.sourceLinks[i].hash.substr(1)) {
+                base.trueArray.push(base.destinationIds[i].offsetTop);
             }
         }
     };
@@ -121,6 +118,8 @@ var Navigation = function() {
 
     base.load = function() {
         base.trueArray = [];
+        base.destinationIds = document.getElementsByClassName('destination');
+        base.sourceLinks = base.navBar.getElementsByTagName('a');
 
         if (document.childNodes[1].clientWidth >= 800) {
             // Full screen functions
