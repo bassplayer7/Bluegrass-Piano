@@ -240,37 +240,41 @@ nav {
       width: 100px;
       height: 2px;
       background: #954a4a;
-      display: none; }
-  /* line 25, ../sass/_layouts.scss */
+      display: none;
+      -webkit-transition: linear, 400ms;
+      -moz-transition: linear, 400ms;
+      -o-transition: linear, 400ms;
+      transition: linear, 400ms; }
+  /* line 26, ../sass/_layouts.scss */
   nav ul {
     width: 100%;
     text-align: justify;
     height: 65px; }
-    /* line 30, ../sass/_layouts.scss */
+    /* line 31, ../sass/_layouts.scss */
     nav ul li {
       display: inline-block;
       list-style: none;
       margin-top: 10px; }
-      /* line 35, ../sass/_layouts.scss */
+      /* line 36, ../sass/_layouts.scss */
       nav ul li a {
         border-bottom: none;
         display: inline-block;
         padding: 10px; }
-        /* line 40, ../sass/_layouts.scss */
+        /* line 41, ../sass/_layouts.scss */
         nav ul li a:hover {
           text-decoration: none;
           border-bottom: none; }
-        /* line 45, ../sass/_layouts.scss */
+        /* line 46, ../sass/_layouts.scss */
         nav ul li a.active {
           border-radius: 4px;
           background-color: #e7e7e7; }
-    /* line 53, ../sass/_layouts.scss */
+    /* line 54, ../sass/_layouts.scss */
     nav ul:after {
       content: "";
       display: inline-block;
       width: 100%; }
 
-/* line 61, ../sass/_layouts.scss */
+/* line 62, ../sass/_layouts.scss */
 .content {
   max-width: 1200px;
   margin: 0 auto 4em;
@@ -282,11 +286,11 @@ nav {
   background-image: -o-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
   background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)); }
   @media (max-width: 1200px) {
-    /* line 61, ../sass/_layouts.scss */
+    /* line 62, ../sass/_layouts.scss */
     .content {
       max-width: 80%; } }
   @media (max-width: 400px) {
-    /* line 61, ../sass/_layouts.scss */
+    /* line 62, ../sass/_layouts.scss */
     .content {
       padding: 0.5em;
       background-color: white; } }

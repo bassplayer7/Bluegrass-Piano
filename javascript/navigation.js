@@ -6,6 +6,8 @@ var Navigation = function() {
     base.navBar = document.getElementById("navigation");
     base.navElements = base.navBar.getElementsByTagName('li');
     base.currentItem = document.getElementById("underline");
+    base.docHeight = document.childNodes[1].scrollHeight - document.childNodes[1].clientHeight;
+    base.windowHeight = document.childNodes[1].clientHeight;
 
     base.addActive = function(e) {
         e.target.className += " active";
@@ -35,31 +37,42 @@ var Navigation = function() {
     base.findMatches = function() {
         var destinationIds = document.querySelectorAll('div[id]'),
             sourceLinks = base.navBar.getElementsByTagName('a');
-        console.log(destinationIds);
 
         var i = 0;
         for (; i < destinationIds.length; i++) {
-            if (destinationIds[i] === sourceLinks[i].hash) {
-                console.log("I have found good hashes");
-            } else {
-                console.log(destinationIds[i] + " I didn't find anything");
-                console.log(sourceLinks[i].hash + " This was the sourceLink");
+            if (destinationIds[i].id === sourceLinks[i].hash.substr(1)) {
+                base.trueArray.push(destinationIds[i].offsetTop);
             }
         }
     };
 
-    base.setNavElement = function() {
+    base.slideUnderline = function(dest) {
+        base.currentItem.style.width = base.navElements[dest].clientWidth + "px";
+        base.currentItem.style.left = base.navElements[dest].offsetLeft + "px";
+    };
+
+    base.scrollLinks = function() {
+        var scrollY = window.scrollY + base.navBar.clientHeight;
+        for (var i = 0; i < base.trueArray.length; i++) {
+            if (scrollY >= base.trueArray[i] && scrollY < base.trueArray[i + 1]) {
+                base.slideUnderline(i);
+            }
+        }
+    };
+
+    base.initialUnderline = function() {
         base.currentItem.style.width = base.navElements[0].clientWidth + "px";
         base.currentItem.style.left = base.navElements[0].offsetLeft + "px";
         base.currentItem.style.display = "block";
     };
 
     base.load = function() {
+        base.trueArray = [];
         base.findElements();
-        base.setNavElement();
+        base.initialUnderline();
         base.findMatches();
 
-        window.addEventListener("resize", base.divideElements, true);
+        window.addEventListener("scroll", base.scrollLinks, true);
     };
 
 };

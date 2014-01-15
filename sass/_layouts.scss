@@ -19,6 +19,7 @@ nav {
       height: 2px;
       background: #954a4a;
       display: none;
+      @include transition(linear, 400ms);
     }
   }
 
