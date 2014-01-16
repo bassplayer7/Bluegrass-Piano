@@ -24,21 +24,42 @@ var Navigation = function() {
     };
 
     base.openMenu = function() {
-        base.pageContent.style.left = (base.windowWidth * 0.8) + "px";
+        base.pageContent.style.left = Math.round(base.windowWidth * 0.8) + "px";
         base.menuIcon.style.left = base.pageContent.style.left;
         base.menuIsOpen = true;
         base.pageContent.addEventListener("click", base.closeMenu);
         base.pageContent.removeEventListener("touchend", base.openMenu);
-        base.resetTouch()
+        base.resetTouch();
     };
 
     base.closeMenu = function() {
-        console.log("Menu is closed");
-        base.pageContent.style.left = 0;
-        base.menuIcon.style.left = "10px";
+        var x = base.lastTouchPlace,
+            slideClose = setInterval(function() {
+            base.animateClosing(x);
+            x -= 2;
+            if (x <= 0) {
+                clearInterval(slideClose);
+            }
+            }, 1);
+
+//        base.pageContent.style.left = 0;
+//        base.menuIcon.style.left = "10px";
+
         base.menuIsOpen = false;
+        console.log("Menu has closed");
         base.pageContent.removeEventListener("touchend", base.closeMenu);
-        base.resetTouch()
+        base.resetTouch();
+    };
+
+    base.animateClosing = function(x) {
+//        for (var i = base.lastTouchPlace * 10, j = 0; i >= j; i--) {
+//            base.pageContent.style.left = (i - 0.1) + "px";
+//            console.log("yes, we calculated");
+
+//        }
+
+    base.pageContent.style.left = (x - 2) + "px";
+    base.menuIcon.style.left = ((x - 2) + 10) + "px";
     };
 
     base.handleTouchMove = function(e) {
@@ -73,10 +94,9 @@ var Navigation = function() {
             base.pageContent.style.left = base.xCoords[base.xCoords.length - 1] + "px"; // follow the touch move
             base.menuIcon.style.left = (base.xCoords[base.xCoords.length - 1] + 10) + "px";
 
-//            if (base.menuIsOpen) {
-                console.log("Tell menu to close");
-                base.pageContent.addEventListener("touchend", base.closeMenu); // when the touch is over, it is safe to close the menu
-//            }
+            console.log("Tell menu to close");
+            base.pageContent.addEventListener("touchend", base.closeMenu); // when the touch is over, it is safe to close the menu
+            base.lastTouchPlace = base.xCoords[base.xCoords.length - 1];
         } else {
             base.pageContent.addEventListener("touchend", base.resetTouch);
         }
@@ -166,6 +186,8 @@ var Navigation = function() {
             base.xCoords = [];
             base.yCoords = [];
             base.touchSmallNav();
+            base.currentEvent = 0;
+            base.fadeAction;
             base.menuIcon.addEventListener("click", base.openMenu, true);
         }
 
