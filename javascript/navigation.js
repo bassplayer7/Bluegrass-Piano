@@ -14,27 +14,45 @@ var Navigation = function() {
     base.menuIcon = document.getElementById('toggle-menu');
     base.windowWidth = document.childNodes[1].clientWidth;
 
+    // Settings
+    base.hortMove = 50; // horizontal movement to be called a side-to-side movement
+    base.vertMove = 40; // vertical movement to be a up-or-down scroll type motion
+
+    base.resetTouch = function() {
+        base.xCoords = [];
+        base.yCoords = [];
+    };
+
     base.openMenu = function() {
         base.pageContent.style.left = (base.windowWidth * 0.8) + "px";
         base.menuIcon.style.left = base.pageContent.style.left;
-        base.pageContent.addEventListener("click", base.closeMenu, true);
+//        base.pageContent.addEventListener("click", base.closeMenu, true);
+        base.menuIsOpen = true;
+        console.log("Menu opened");
+        base.resetTouch();
     };
 
-    base.closeMenu = function() {
+    base.closeMenu = function(e) {
         base.pageContent.style.left = 0;
         base.menuIcon.style.left = "10px";
+        base.menuIsOpen = false;
+        console.log(e);
+        console.log("Menu has been closed");
+        base.resetTouch();
     };
 
     base.finishMenuDrag = function() {
         // decide if the touch was opening or closing the menu.
         if (base.currentXCoords <= base.previousXCoords) {
-            base.closeMenu();
+//            base.closeMenu();
             base.previousXCoords = base.currentXCoords;
             base.xCoords = [];
+            base.yCoords = [];
         } else {
             base.openMenu();
             base.previousXCoords = base.currentXCoords;
             base.xCoords = [];
+            base.yCoords = [];
         }
     };
 
@@ -98,14 +116,59 @@ var Navigation = function() {
     };
 
     base.dragMenu = function(e) {
-        base.xCoords.push(e.changedTouches[0].clientX);
-        console.log(e.changedTouches[0].touchIdentifier);
-        if (base.xCoords[0] > (base.xCoords[base.xCoords.length - 1] - 50)) {
-            base.currentXCoords = e.changedTouches[0].clientX;
-            base.pageContent.style.left = base.currentXCoords + "px";
-            base.menuIcon.style.left = base.currentXCoords + "10px";
-            base.pageContent.addEventListener("touchend", base.finishMenuDrag, true);
+        var touch = e.changedTouches;
+
+        if ((base.xCoords[base.xCoords.length - 1]) !== touch[0].clientX) {
+            base.xCoords.push(touch[0].clientX);
         }
+
+        if ((base.yCoords[base.yCoords.length - 1]) !== touch[0].clientY) {
+            base.yCoords.push(touch[0].clientY);
+        }
+
+//        base.xCoords = [30, 233, 234];
+//        base.yCoords = [338, 339, 340];
+
+        console.log(base.xCoords);
+        console.log(base.yCoords);
+
+//        if (base.menuIsOpen === false) {
+            if (base.menuIsOpen === false
+            &&  base.xCoords[base.xCoords.length - 1] >= (base.xCoords[0] + base.hortMove)
+            &&  base.yCoords[base.yCoords.length - 1] <= (base.yCoords[0] + base.vertMove)) {
+                base.currentXCoords = e.changedTouches[0].clientX;
+                base.pageContent.style.left = base.currentXCoords + "px";
+                base.menuIcon.style.left = base.currentXCoords + "10px";
+                base.pageContent.addEventListener("touchend", base.openMenu, true);
+                console.log("Open this menu");
+//                base.openMenu();
+//                base.xCoords = [234, 233, 30];
+                return;
+            } else if (base.menuIsOpen === true
+                   && (base.xCoords[base.xCoords.length - 1] <= (base.xCoords[0] + base.hortMove)) // If you end up with a lower X then you started:
+                   && (base.yCoords[base.yCoords.length - 1] <= (base.yCoords[0] + base.vertMove))) {
+                base.pageContent.style.left = base.currentXCoords + "px";
+                base.menuIcon.style.left = base.currentXCoords + "10px";
+//                console.log("Tell the menu to close");
+                base.pageContent.addEventListener("touchend", base.closeMenu, true);
+//                base.closeMenu();
+                return;
+            } else {
+                base.pageContent.addEventListener("touchend", base.resetTouch, true);
+            }
+//        }
+
+//        if (base.menuIsOpen === true) {
+//            if ((base.xCoords[base.xCoords.length - 1] <= (base.xCoords[0] + base.hortMove)) // If you end up with a lower X then you started:
+//                && (base.yCoords[base.yCoords.length - 1] <= (base.yCoords[0] + base.vertMove))) {
+//                base.pageContent.style.left = base.currentXCoords + "px";
+//                base.menuIcon.style.left = base.currentXCoords + "10px";
+//                console.log("Close this menu");
+//                base.pageContent.addEventListener("touchend", base.closeMenu, true);
+//            } else {
+//                base.pageContent.addEventListener("touchend", base.resetTouch, true);
+//            }
+//        }
     };
 
     base.touchSmallNav = function() {
@@ -129,9 +192,11 @@ var Navigation = function() {
         } else {
             // Small screen functions.
             base.smallNavSize();
+            base.menuIsOpen = false;
             base.previousXCoords = 0;
             base.currentXCoords = 0;
             base.xCoords = [];
+            base.yCoords = [];
             base.pageContent.addEventListener("touchstart", base.touchSmallNav, true);
             base.menuIcon.addEventListener("click", base.openMenu, true);
         }
