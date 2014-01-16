@@ -15,8 +15,8 @@ var Navigation = function() {
     base.windowWidth = document.childNodes[1].clientWidth;
 
     // Settings
-    base.hortMove = 50; // horizontal movement to be called a side-to-side movement
-    base.vertMove = 40; // vertical movement to be a up-or-down scroll type motion
+    base.hMove = 50; // horizontal movement to be called a side-to-side movement
+    base.vMove = 30; // vertical movement to be a up-or-down scroll type motion
 
     base.resetTouch = function() {
         base.xCoords = [];
@@ -26,33 +26,59 @@ var Navigation = function() {
     base.openMenu = function() {
         base.pageContent.style.left = (base.windowWidth * 0.8) + "px";
         base.menuIcon.style.left = base.pageContent.style.left;
-//        base.pageContent.addEventListener("click", base.closeMenu, true);
         base.menuIsOpen = true;
-        console.log("Menu opened");
-        base.resetTouch();
+        base.pageContent.addEventListener("click", base.closeMenu);
+        base.pageContent.removeEventListener("touchend", base.openMenu);
+        base.resetTouch()
     };
 
-    base.closeMenu = function(e) {
+    base.closeMenu = function() {
+        console.log("Menu is closed");
         base.pageContent.style.left = 0;
         base.menuIcon.style.left = "10px";
         base.menuIsOpen = false;
-        console.log(e);
-        console.log("Menu has been closed");
-        base.resetTouch();
+        base.pageContent.removeEventListener("touchend", base.closeMenu);
+        base.resetTouch()
     };
 
-    base.finishMenuDrag = function() {
-        // decide if the touch was opening or closing the menu.
-        if (base.currentXCoords <= base.previousXCoords) {
-//            base.closeMenu();
-            base.previousXCoords = base.currentXCoords;
-            base.xCoords = [];
-            base.yCoords = [];
+    base.handleTouchMove = function(e) {
+        var touch = e.changedTouches;
+
+        if ((base.xCoords[base.xCoords.length - 1]) !== touch[0].clientX) {
+            base.xCoords.push(touch[0].clientX);
+        }
+
+        if ((base.yCoords[base.yCoords.length - 1]) !== touch[0].clientY) {
+            base.yCoords.push(touch[0].clientY);
+        }
+
+        console.log(base.xCoords);
+        console.log(base.yCoords); console.log("yCoords");
+
+        if (base.xCoords[base.xCoords.length - 1] >= (base.xCoords[0] + base.hMove)
+        &&  base.yCoords[base.yCoords.length - 1] <= (base.yCoords[0] + base.vMove)
+        &&  base.yCoords[base.yCoords.length - 1] >= (base.yCoords[0] - base.vMove)) {
+            console.log("In opening, set style.left to match touch position.");
+            base.pageContent.style.left = base.xCoords[base.xCoords.length - 1] + "px"; // follow the touch move
+            base.menuIcon.style.left = (base.xCoords[base.xCoords.length - 1] + 10) + "px";
+
+            if (!base.menuIsOpen) {
+                console.log("Tell menu to open");
+                base.pageContent.addEventListener("touchend", base.openMenu); // only if the menu is currently closed should it stay open
+            }
+        } else if (base.xCoords[base.xCoords.length - 1] <= (base.xCoords[0] - base.hMove) // If you end up with a lower X then you started:
+                && base.yCoords[base.yCoords.length - 1] <= (base.yCoords[0] + base.vMove)
+                && base.menuIsOpen) {
+            console.log("In closing, set style.left to match touch position.");
+            base.pageContent.style.left = base.xCoords[base.xCoords.length - 1] + "px"; // follow the touch move
+            base.menuIcon.style.left = (base.xCoords[base.xCoords.length - 1] + 10) + "px";
+
+//            if (base.menuIsOpen) {
+                console.log("Tell menu to close");
+                base.pageContent.addEventListener("touchend", base.closeMenu); // when the touch is over, it is safe to close the menu
+//            }
         } else {
-            base.openMenu();
-            base.previousXCoords = base.currentXCoords;
-            base.xCoords = [];
-            base.yCoords = [];
+            base.pageContent.addEventListener("touchend", base.resetTouch);
         }
     };
 
@@ -115,67 +141,11 @@ var Navigation = function() {
         base.everything.style.height = base.docHeight + "px";
     };
 
-    base.dragMenu = function(e) {
-        var touch = e.changedTouches;
-
-        if ((base.xCoords[base.xCoords.length - 1]) !== touch[0].clientX) {
-            base.xCoords.push(touch[0].clientX);
-        }
-
-        if ((base.yCoords[base.yCoords.length - 1]) !== touch[0].clientY) {
-            base.yCoords.push(touch[0].clientY);
-        }
-
-//        base.xCoords = [30, 233, 234];
-//        base.yCoords = [338, 339, 340];
-
-        console.log(base.xCoords);
-        console.log(base.yCoords);
-
-//        if (base.menuIsOpen === false) {
-            if (base.menuIsOpen === false
-            &&  base.xCoords[base.xCoords.length - 1] >= (base.xCoords[0] + base.hortMove)
-            &&  base.yCoords[base.yCoords.length - 1] <= (base.yCoords[0] + base.vertMove)) {
-                base.currentXCoords = e.changedTouches[0].clientX;
-                base.pageContent.style.left = base.currentXCoords + "px";
-                base.menuIcon.style.left = base.currentXCoords + "10px";
-                base.pageContent.addEventListener("touchend", base.openMenu, true);
-                console.log("Open this menu");
-//                base.openMenu();
-//                base.xCoords = [234, 233, 30];
-                return;
-            } else if (base.menuIsOpen === true
-                   && (base.xCoords[base.xCoords.length - 1] <= (base.xCoords[0] + base.hortMove)) // If you end up with a lower X then you started:
-                   && (base.yCoords[base.yCoords.length - 1] <= (base.yCoords[0] + base.vertMove))) {
-                base.pageContent.style.left = base.currentXCoords + "px";
-                base.menuIcon.style.left = base.currentXCoords + "10px";
-//                console.log("Tell the menu to close");
-                base.pageContent.addEventListener("touchend", base.closeMenu, true);
-//                base.closeMenu();
-                return;
-            } else {
-                base.pageContent.addEventListener("touchend", base.resetTouch, true);
-            }
-//        }
-
-//        if (base.menuIsOpen === true) {
-//            if ((base.xCoords[base.xCoords.length - 1] <= (base.xCoords[0] + base.hortMove)) // If you end up with a lower X then you started:
-//                && (base.yCoords[base.yCoords.length - 1] <= (base.yCoords[0] + base.vertMove))) {
-//                base.pageContent.style.left = base.currentXCoords + "px";
-//                base.menuIcon.style.left = base.currentXCoords + "10px";
-//                console.log("Close this menu");
-//                base.pageContent.addEventListener("touchend", base.closeMenu, true);
-//            } else {
-//                base.pageContent.addEventListener("touchend", base.resetTouch, true);
-//            }
-//        }
-    };
-
     base.touchSmallNav = function() {
-        base.pageContent.addEventListener("touchmove", base.dragMenu, true);
+        base.pageContent.addEventListener("touchmove", base.handleTouchMove);
 
         for (var i = 0, j = base.navElements.length; i < j; i++) {
-            base.navElements[i].childNodes[0].addEventListener("click", base.closeMenu, true);
+            base.navElements[i].childNodes[0].addEventListener("click", base.closeMenu, true); // If a link in the menu is tapped, close the menu
         }
     };
 
@@ -193,11 +163,9 @@ var Navigation = function() {
             // Small screen functions.
             base.smallNavSize();
             base.menuIsOpen = false;
-            base.previousXCoords = 0;
-            base.currentXCoords = 0;
             base.xCoords = [];
             base.yCoords = [];
-            base.pageContent.addEventListener("touchstart", base.touchSmallNav, true);
+            base.touchSmallNav();
             base.menuIcon.addEventListener("click", base.openMenu, true);
         }
 
