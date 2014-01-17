@@ -1,5 +1,5 @@
 /**
- * Created by jessemaxwell on 1/14/14.
+ * Developed by Jesse Maxwell for BluegrassPiano.com.
  */
 var Navigation = function() {
     var base = this;
@@ -34,8 +34,6 @@ var Navigation = function() {
                 }
             }, 1);
 
-//        base.pageContent.style.left = Math.round(base.windowWidth * 0.8) + "px";
-//        base.menuIcon.style.left = base.pageContent.style.left;
         base.menuIsOpen = true;
         base.pageContent.addEventListener("click", base.closeMenu);
         base.pageContent.removeEventListener("touchend", base.openMenu);
@@ -43,9 +41,8 @@ var Navigation = function() {
     };
 
     base.closeMenu = function() {
-        var x = base.lastTouchPlace;
-        console.log(x);
-        var slideClose = setInterval(function() {
+        var x = base.lastTouchPlace,
+            slideClose = setInterval(function() {
             base.animateClosing(x);
             x -= 2;
             if (x <= 0) {
@@ -57,7 +54,6 @@ var Navigation = function() {
             }, 1);
 
         base.menuIsOpen = false;
-        console.log("Menu has closed");
         base.pageContent.removeEventListener("touchend", base.closeMenu);
         base.resetTouch();
     };
@@ -65,7 +61,7 @@ var Navigation = function() {
     base.animateOpening = function(x) {
         base.pageContent.style.left = (x + 2) + "px";
         base.menuIcon.style.left = (x + 12) + "px";
-    }
+    };
 
     base.animateClosing = function(x) {
         base.pageContent.style.left = (x - 2) + "px";
@@ -87,9 +83,9 @@ var Navigation = function() {
             base.yCoords.push(touch[0].clientY);
         }
 
-        if (base.xCoords[base.xCoords.length - 1] >= (base.xCoords[0] + base.hMove)
-        &&  base.yCoords[base.yCoords.length - 1] <= (base.yCoords[0] + base.vMove)
-        &&  base.yCoords[base.yCoords.length - 1] >= (base.yCoords[0] - base.vMove)) {
+        if (base.xCoords[base.xCoords.length - 1] >= (base.xCoords[0] + base.hMove) &&
+            base.yCoords[base.yCoords.length - 1] <= (base.yCoords[0] + base.vMove) &&
+            base.yCoords[base.yCoords.length - 1] >= (base.yCoords[0] - base.vMove)) {
             base.pageContent.style.left = base.xCoords[base.xCoords.length - 1] + "px"; // follow the touch move
             base.menuIcon.style.left = (base.xCoords[base.xCoords.length - 1] + 10) + "px";
 
@@ -97,9 +93,9 @@ var Navigation = function() {
                 base.pageContent.addEventListener("touchend", base.openMenu); // only if the menu is currently closed should it stay open
                 base.lastTouchPlace = base.xCoords[base.xCoords.length - 1];
             }
-        } else if (base.xCoords[base.xCoords.length - 1] <= (base.xCoords[0] - base.hMove) // If you end up with a lower X then you started:
-                && base.yCoords[base.yCoords.length - 1] <= (base.yCoords[0] + base.vMove)
-                && base.menuIsOpen) {
+        } else if (base.xCoords[base.xCoords.length - 1] <= (base.xCoords[0] - base.hMove) && // If you end up with a lower X then you started:
+                   base.yCoords[base.yCoords.length - 1] <= (base.yCoords[0] + base.vMove) &&
+                   base.menuIsOpen) {
             base.pageContent.style.left = base.xCoords[base.xCoords.length - 1] + "px"; // follow the touch move while closing
             base.menuIcon.style.left = (base.xCoords[base.xCoords.length - 1] + 10) + "px";
             base.pageContent.addEventListener("touchend", base.closeMenu); // when the touch is over, it is safe to close the menu
@@ -115,11 +111,7 @@ var Navigation = function() {
     };
 
     base.removeActive = function(e) {
-        var target = e.target;
-        base.replaceClassName(target);
-    };
-
-    base.replaceClassName = function(input) {
+        var input = e.target;
         if (input !== undefined) {
             input.className = input.className.replace(/(?:^|\s)active(?!\S)/g , '' );
             return base;
@@ -134,14 +126,6 @@ var Navigation = function() {
         }
     };
 
-    base.findMatches = function() {
-        for (var i = 0, j = base.destinationIds.length; i < j; i++) {
-            if (base.destinationIds[i].id === base.sourceLinks[i].hash.substr(1)) {
-                base.trueArray.push(base.destinationIds[i].offsetTop);
-            }
-        }
-    };
-
     base.slideUnderline = function(dest) {
         base.currentItem.style.width = base.navElements[dest].clientWidth + "px";
         base.currentItem.style.left = base.navElements[dest].offsetLeft + "px";
@@ -149,18 +133,25 @@ var Navigation = function() {
 
     base.scrollLinks = function() {
         var scrollY = window.scrollY + base.navBar.clientHeight;
-        for (var i = 0; i < base.trueArray.length; i++) {
+        for (var i = 0, j = base.trueArray.length; i < j; i++) {
             if (scrollY >= base.trueArray[i] && scrollY < base.trueArray[i + 1]) {
                 base.slideUnderline(i);
+                return;
             }
         }
     };
 
-    base.initialUnderline = function() {
+    base.setupScrollNav = function() {
         base.currentItem.style.width = base.navElements[0].clientWidth + "px";
         base.currentItem.style.left = base.navElements[0].offsetLeft + "px";
         // Turns on the underline span so that it displays on compatible (modern) browsers.
         base.currentItem.style.display = "block";
+
+        for (var i = 0, j = base.destinationIds.length; i < j; i++) {
+            if (base.destinationIds[i].id === base.sourceLinks[i].hash.substr(1)) {
+                base.trueArray.push(base.destinationIds[i].offsetTop);
+            }
+        }
     };
 
     base.smallNavSize = function() {
@@ -184,8 +175,7 @@ var Navigation = function() {
         if (document.childNodes[1].clientWidth >= 800) {
             // Full screen functions
             base.findElements();
-            base.initialUnderline();
-            base.findMatches();
+            base.setupScrollNav();
         } else {
             // Small screen functions.
             base.smallNavSize();
