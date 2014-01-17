@@ -3,7 +3,7 @@ div.page {
   @include bp($banjo) {
     width: 100%;
     position: relative;
-    overflow-x: scroll;
+    overflow: hidden;
   }
 }
 
@@ -93,11 +93,6 @@ nav {
       }
     }
 
-    // ul
-    @include bp($guitar) {
-      height: 80px;
-    }
-
     // make sure the menu items remain justified.
     &:after {
       content: "";
@@ -135,7 +130,7 @@ nav {
     max-width: 80%;
   }
 
-  @include bp($fiddle) {
+  @include bp($banjo) {
     padding: 0.5em;
     background-color: $background-color;
     max-width: 100%;
