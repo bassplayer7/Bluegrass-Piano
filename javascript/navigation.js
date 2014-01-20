@@ -9,7 +9,7 @@ var Navigation = function() {
     base.pageContent = document.getElementById("page-content");
     base.everything = document.getElementById('nav-and-content');
     base.currentItem = document.getElementById("underline");
-    base.docHeight = document.childNodes[1].scrollHeight - document.childNodes[1].clientHeight;
+    base.docHeight = (document.childNodes[1].scrollHeight - document.childNodes[1].clientHeight) + document.childNodes[1].scrollTop;
     base.windowHeight = document.childNodes[1].clientHeight;
     base.menuIcon = document.getElementById('toggle-menu');
     base.windowWidth = document.childNodes[1].clientWidth;
@@ -176,6 +176,7 @@ var Navigation = function() {
             // Full screen functions
             base.findElements();
             base.setupScrollNav();
+            window.addEventListener("scroll", base.scrollLinks, true);
         } else {
             // Small screen functions.
             base.smallNavSize();
@@ -187,7 +188,7 @@ var Navigation = function() {
             base.menuIcon.addEventListener("click", base.openMenu, true);
         }
 
-        window.addEventListener("scroll", base.scrollLinks, true);
+
     };
 
 };

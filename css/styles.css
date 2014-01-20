@@ -265,7 +265,7 @@ nav {
       /* line 22, ../sass/_layouts.scss */
       nav div {
         max-width: 80%; } }
-    @media (max-width: 800px) {
+    @media (max-width: 1000px) {
       /* line 22, ../sass/_layouts.scss */
       nav div {
         width: 100%;

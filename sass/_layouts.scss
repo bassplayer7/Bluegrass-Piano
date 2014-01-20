@@ -39,7 +39,7 @@ nav {
       max-width: 80%;
     }
 
-    @include bp($banjo) {
+    @include bp($guitar) {
       width: 100%;
       max-width: 100%;
     }
@@ -117,7 +117,7 @@ nav {
 
 .content {
   max-width:$bass;
-  margin: 0 auto 4em;
+  margin: 0.5em auto 4em;
   z-index: 2;
 
   padding:2em 10% 4em;
