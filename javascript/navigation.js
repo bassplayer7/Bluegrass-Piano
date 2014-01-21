@@ -23,16 +23,15 @@ var Navigation = function() {
         base.yCoords = [];
     };
 
-    base.openMenu = function() {
-        var x = base.lastTouchPlace,
-            slideOpen = setInterval(function() {
-                base.animateOpening(x);
-                x += 2;
-                if (x >= Math.round(base.windowWidth * 0.8)) {
-                    clearInterval(slideOpen);
-                    base.lastTouchPlace = 0;
-                }
-            }, 1);
+    base.openMenu = function(e) {
+        base.pageContent.className += " smooth";
+        base.pageContent.style.left = Math.round(base.windowWidth * 0.8) + "px";
+        base.menuIcon.style.left = (Math.round(base.windowWidth * 0.8) + 10) + "px";
+
+        var clearSmooth = setTimeout(function() {
+            base.removeSmooth();
+        }, 600);
+
 
         base.menuIsOpen = true;
         base.pageContent.addEventListener("click", base.closeMenu);
@@ -40,37 +39,46 @@ var Navigation = function() {
         base.resetTouch();
     };
 
-    base.closeMenu = function() {
-        var x = base.lastTouchPlace,
-            slideClose = setInterval(function() {
-            base.animateClosing(x);
-            x -= 2;
-            if (x <= 0) {
-                clearInterval(slideClose);
-                base.lastTouchPlace = 0;
-                base.pageContent.style.left = 0;
-                base.menuIcon.style.left = "10px";
-                }
-            }, 1);
+    base.closeMenu = function(e) {
+        base.pageContent.className += " smooth";
+        var clearSmooth = setTimeout(function() {
+            base.removeSmooth();
+        }, 600);
+
+        base.pageContent.style.left = 0;
+        base.menuIcon.style.left = "10px";
 
         base.menuIsOpen = false;
         base.pageContent.removeEventListener("touchend", base.closeMenu);
         base.resetTouch();
     };
 
-    base.animateOpening = function(x) {
-        base.pageContent.style.left = (x + 2) + "px";
-        base.menuIcon.style.left = (x + 12) + "px";
-    };
+    base.finishMenu = function(state) {
+        console.log("Called finishMenu " + state);
+        base.pageContent.className += " smooth";
+        var pos = state ? Math.round(base.windowWidth * 0.8) : 0;
 
-    base.animateClosing = function(x) {
-        base.pageContent.style.left = (x - 2) + "px";
-        base.menuIcon.style.left = ((x - 2) + 10) + "px";
+        base.pageContent.style.left = pos + "px";
+        base.menuIcon.style.left = (pos + 10) + "px";
 
-//        for (var i = base.lastTouchPlace, j = 0; i >= j; i--) {
-//            base.pageContent.style.left = (i - 1) + "px";
-//        }
-    };
+        setTimeout(function() {
+            base.removeSmooth();
+        }, 600);
+
+        base.menuIsOpen = state;
+
+        if (state) {
+            base.pageContent.addEventListener("click", base.closeMenu);
+            base.pageContent.removeEventListener("touchend", base.openMenu);
+            console.log("If statement: the menu is open");
+        } else {
+            base.pageContent.removeEventListener("touchend", base.closeMenu);
+            console.log("If statement: the menu is closed");
+        }
+
+        console.log("the menu is " + base.menuIsOpen);
+        base.resetTouch();
+    }
 
     base.handleTouchMove = function(e) {
         var touch = e.changedTouches;
@@ -90,7 +98,9 @@ var Navigation = function() {
             base.menuIcon.style.left = (base.xCoords[base.xCoords.length - 1] + 10) + "px";
 
             if (!base.menuIsOpen) {
-                base.pageContent.addEventListener("touchend", base.openMenu); // only if the menu is currently closed should it stay open
+                base.pageContent.addEventListener("touchend", function() {
+                    return base.finishMenu(true); // only if the menu is currently closed should it stay open
+                }, false);
                 base.lastTouchPlace = base.xCoords[base.xCoords.length - 1];
             }
         } else if (base.xCoords[base.xCoords.length - 1] <= (base.xCoords[0] - base.hMove) && // If you end up with a lower X then you started:
@@ -98,7 +108,9 @@ var Navigation = function() {
                    base.menuIsOpen) {
             base.pageContent.style.left = base.xCoords[base.xCoords.length - 1] + "px"; // follow the touch move while closing
             base.menuIcon.style.left = (base.xCoords[base.xCoords.length - 1] + 10) + "px";
-            base.pageContent.addEventListener("touchend", base.closeMenu); // when the touch is over, it is safe to close the menu
+            base.pageContent.addEventListener("touchend", function() {
+                return base.finishMenu(false); // when the touch is over, it is safe to close the menu
+            });
             base.lastTouchPlace = base.xCoords[base.xCoords.length - 1]; // for use in the sliding operation
         } else {
             base.pageContent.addEventListener("touchend", base.resetTouch);
@@ -115,6 +127,13 @@ var Navigation = function() {
         if (input !== undefined) {
             input.className = input.className.replace(/(?:^|\s)active(?!\S)/g , '' );
             return base;
+        }
+    };
+
+    base.removeSmooth = function() {
+        obj = base.pageContent;
+        if (obj !== undefined) {
+            obj.className = obj.className.replace(/(?:^|\s)smooth(?!\S)/g , '' );
         }
     };
 

@@ -68,6 +68,8 @@ nav {
         &.active {
           border-radius: 4px;
           background-color: $bg-color;
+
+          @include transition(all, linear, .2s);
         }
 
         @include bp($guitar) {
@@ -117,8 +119,12 @@ nav {
 
 .content {
   max-width:$bass;
-  margin: 0.5em auto 4em;
+  margin: 0 auto 4em;
   z-index: 2;
+
+  &.smooth {
+    @include transition(all, linear, .2s);
+  }
 
   padding:2em 10% 4em;
   min-height: 100%;
@@ -131,6 +137,7 @@ nav {
   }
 
   @include bp($banjo) {
+    margin-top:0.5em;
     padding: 0.5em;
     background-color: $background-color;
     max-width: 100%;

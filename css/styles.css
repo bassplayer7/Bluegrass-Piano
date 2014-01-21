@@ -292,7 +292,11 @@ nav {
         /* line 68, ../sass/_layouts.scss */
         nav ul li a.active {
           border-radius: 4px;
-          background-color: #e7e7e7; }
+          background-color: #e7e7e7;
+          -webkit-transition: all, linear, 0.2s;
+          -moz-transition: all, linear, 0.2s;
+          -o-transition: all, linear, 0.2s;
+          transition: all, linear, 0.2s; }
         @media (max-width: 1000px) {
           /* line 58, ../sass/_layouts.scss */
           nav ul li a {
@@ -302,7 +306,7 @@ nav {
           nav ul li a {
             color: #ededed;
             padding: 12px 0px 12px 25px; }
-            /* line 82, ../sass/_layouts.scss */
+            /* line 84, ../sass/_layouts.scss */
             nav ul li a:visited, nav ul li a:hover {
               color: #ededed; } }
       @media (max-width: 800px) {
@@ -311,13 +315,13 @@ nav {
           display: block;
           margin: 0;
           border-bottom: 1px #292929 solid; } }
-    /* line 97, ../sass/_layouts.scss */
+    /* line 99, ../sass/_layouts.scss */
     nav ul:after {
       content: "";
       display: inline-block;
       width: 100%; }
 
-/* line 106, ../sass/_layouts.scss */
+/* line 108, ../sass/_layouts.scss */
 .menu-icon {
   display: none;
   position: absolute;
@@ -325,11 +329,11 @@ nav {
   top: 10px;
   left: 10px; }
   @media (max-width: 800px) {
-    /* line 106, ../sass/_layouts.scss */
+    /* line 108, ../sass/_layouts.scss */
     .menu-icon {
       display: block; } }
 
-/* line 118, ../sass/_layouts.scss */
+/* line 120, ../sass/_layouts.scss */
 .content {
   max-width: 1200px;
   margin: 0 auto 4em;
@@ -341,18 +345,25 @@ nav {
   background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
   background-image: -o-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
   background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)); }
+  /* line 125, ../sass/_layouts.scss */
+  .content.smooth {
+    -webkit-transition: all, linear, 0.2s;
+    -moz-transition: all, linear, 0.2s;
+    -o-transition: all, linear, 0.2s;
+    transition: all, linear, 0.2s; }
   @media (max-width: 1200px) {
-    /* line 118, ../sass/_layouts.scss */
+    /* line 120, ../sass/_layouts.scss */
     .content {
       max-width: 80%; } }
   @media (max-width: 800px) {
-    /* line 118, ../sass/_layouts.scss */
+    /* line 120, ../sass/_layouts.scss */
     .content {
+      margin-top: 0.5em;
       padding: 0.5em;
       background-color: white;
       max-width: 100%;
       width: 100%; } }
   @media (max-width: 800px) {
-    /* line 118, ../sass/_layouts.scss */
+    /* line 120, ../sass/_layouts.scss */
     .content {
       position: relative; } }
