@@ -7,7 +7,7 @@ var Scrolling = function() {
     base.currentYPosition = function() {
         // Firefox, Chrome, Opera, Safari
         if (self.pageYOffset) {
-            return self.pageYOffset;
+            return self.pageYOffset; // to compensate for the fixed nav menu
         }
         // Internet Explorer 6 - standards mode
         if (document.documentElement && document.documentElement.scrollTop) {
@@ -22,37 +22,59 @@ var Scrolling = function() {
     };
 
     base.elmYPosition = function(eID) {
-        var elm = document.getElementById(eID);
-        var y = elm.offsetTop;
-        var node = elm;
-        while (node.offsetParent && node.offsetParent != document.body) {
-            node = node.offsetParent;
-            y += node.offsetTop;
+        var elm = document.getElementById(eID).childNodes[1];
+        var y = elm.offsetTop - elm.clientHeight - navigation.navBar.clientHeight; // to compensate for the fixed nav menu
+        console.log("y = " + y);
+        console.log("clientHeight = " + navigation.navBar.clientHeight);
+        console.log("offsetTop = " + elm.offsetTop);
+        while (elm.offsetParent && elm.offsetParent !== document.body) {
+            console.log("elm = " + elm);
+            elm = elm.offsetParent;
+            y += elm.offsetTop;
         } return y;
     };
 
     base.smoothScroll = function(evt) {
         var eID = evt.toElement.hash.substr(1);
         var startY = base.currentYPosition();
-        var stopY = base.elmYPosition(eID) - navigation.navBar.clientHeight;
+        var stopY = base.elmYPosition(eID);
         var distance = stopY > startY ? stopY - startY : startY - stopY;
+//        console.log("distance = " + stopY);
         if (distance < 150) {
-            scrollTo(0, stopY); return;
+//            console.log("Distance was less then 150 and stopY is " + stopY + " - " + navigation.navBar.clientHeight);
+//            var shortStop = stopY - navigation.navBar.clientHeight;
+            window.scrollTo(0, stopY);
+            return;
         }
         var speed = Math.round(distance / 100);
-        if (speed >= 20) speed = 20;
+        console.log("stopY = " + stopY);
+        if (speed >= 20) {
+            speed = 20;
+        }
         var step = Math.round(distance / 25);
+//        console.log("step = " + step);
         var leapY = stopY > startY ? startY + step : startY - step;
+//        console.log("leapY = " + leapY);
         var timer = 0;
         if (stopY > startY) {
-            for ( var i=startY; i<stopY; i+=step ) {
+//            console.log("StopY is > startY");
+            for ( var i = startY; i < stopY; i += step ) {
                 setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
-                leapY += step; if (leapY > stopY) leapY = stopY; timer++;
-            } return;
+                leapY += step;
+                if (leapY > stopY) {
+                    leapY = stopY;
+                }
+                timer++;
+            }
+            return;
         }
-        for ( var i=startY; i>stopY; i-=step ) {
+        for ( var j = startY; j > stopY; j -= step ) {
             setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
-            leapY -= step; if (leapY < stopY) leapY = stopY; timer++;
+            leapY -= step;
+            if (leapY < stopY) {
+                leapY = stopY;
+            }
+            timer++;
         }
     };
 
@@ -64,8 +86,8 @@ var Scrolling = function() {
                 pageLinks[i].addEventListener("click", base.smoothScroll, true);
             }
         }
-    }
-}
+    };
+};
 
 var smoothlyScroll = new Scrolling();
 

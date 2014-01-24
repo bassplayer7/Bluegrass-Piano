@@ -134,7 +134,7 @@ a {
     border-radius: 5px; } }
 /* line 63, ../sass/_general.scss */
 h1 {
-  margin: 1.2em auto 0;
+  margin: 1em auto 0;
   font-size: 4em;
   font-family: 'Raleway', sans-serif;
   font-weight: 100;
@@ -163,7 +163,6 @@ h1 {
 h2 {
   font-size: 2.5em;
   text-align: center;
-  margin: 1.2em 0 0;
   font-family: 'Raleway', sans-serif;
   font-weight: 100; }
   @media (max-width: 1000px) {
@@ -171,7 +170,7 @@ h2 {
     h2 {
       font-size: 2.1em; } }
 
-/* line 105, ../sass/_general.scss */
+/* line 104, ../sass/_general.scss */
 h3 {
   font-size: 2em;
   text-align: center;
@@ -179,40 +178,40 @@ h3 {
   font-weight: 100;
   margin: 1.2em 0 0; }
 
-/* line 113, ../sass/_general.scss */
+/* line 112, ../sass/_general.scss */
 p {
   margin: 0 auto;
   margin-top: 0.8em;
   line-height: 22px; }
 
-/* line 119, ../sass/_general.scss */
+/* line 118, ../sass/_general.scss */
 dl {
   line-height: 22px; }
-  /* line 120, ../sass/_general.scss */
+  /* line 119, ../sass/_general.scss */
   dl dt {
     text-transform: uppercase;
     margin-top: 1em; }
-  /* line 125, ../sass/_general.scss */
+  /* line 124, ../sass/_general.scss */
   dl dd {
     padding-left: 2em; }
 
-/* line 132, ../sass/_general.scss */
+/* line 131, ../sass/_general.scss */
 ul {
   list-style: disc inside none;
   line-height: 22px; }
 
-/* line 137, ../sass/_general.scss */
+/* line 136, ../sass/_general.scss */
 ol {
   list-style: decimal outside none;
   margin-top: 0.5em;
   padding-left: 2em;
   line-height: 22px; }
 
-/* line 144, ../sass/_general.scss */
+/* line 143, ../sass/_general.scss */
 em {
   font-style: italic; }
 
-/* line 148, ../sass/_general.scss */
+/* line 147, ../sass/_general.scss */
 .updated {
   font-size: 0.7em;
   margin-top: 6em;
@@ -351,6 +350,9 @@ nav {
     -moz-transition: all, linear, 0.2s;
     -o-transition: all, linear, 0.2s;
     transition: all, linear, 0.2s; }
+  /* line 134, ../sass/_layouts.scss */
+  .content > div {
+    margin: 1em 0; }
   @media (max-width: 1200px) {
     /* line 120, ../sass/_layouts.scss */
     .content {

@@ -23,40 +23,41 @@ var Navigation = function() {
         base.yCoords = [];
     };
 
-    base.openMenu = function(e) {
+//    base.openMenu = function(e) {
+//        base.pageContent.className += " smooth";
+//        base.pageContent.style.left = Math.round(base.windowWidth * 0.8) + "px";
+//        base.menuIcon.style.left = (Math.round(base.windowWidth * 0.8) + 10) + "px";
+//
+//        var clearSmooth = setTimeout(function() {
+//            base.removeSmooth();
+//        }, 600);
+//
+//
+//        base.menuIsOpen = true;
+//        base.pageContent.addEventListener("click", base.closeMenu);
+//        base.pageContent.removeEventListener("touchend", base.openMenu);
+//        base.resetTouch();
+//    };
+
+//    base.closeMenu = function(e) {
+//        base.pageContent.className += " smooth";
+//        var clearSmooth = setTimeout(function() {
+//            base.removeSmooth();
+//        }, 600);
+//
+//        base.pageContent.style.left = 0;
+//        base.menuIcon.style.left = "10px";
+//
+//        base.menuIsOpen = false;
+//        base.pageContent.removeEventListener("touchend", base.closeMenu);
+//        base.resetTouch();
+//    };
+
+    base.finishMenu = function(e) {
+        console.log(e);
+        var state = base.shouldOpen,
+            pos = state ? Math.round(base.windowWidth * 0.8) : 0;
         base.pageContent.className += " smooth";
-        base.pageContent.style.left = Math.round(base.windowWidth * 0.8) + "px";
-        base.menuIcon.style.left = (Math.round(base.windowWidth * 0.8) + 10) + "px";
-
-        var clearSmooth = setTimeout(function() {
-            base.removeSmooth();
-        }, 600);
-
-
-        base.menuIsOpen = true;
-        base.pageContent.addEventListener("click", base.closeMenu);
-        base.pageContent.removeEventListener("touchend", base.openMenu);
-        base.resetTouch();
-    };
-
-    base.closeMenu = function(e) {
-        base.pageContent.className += " smooth";
-        var clearSmooth = setTimeout(function() {
-            base.removeSmooth();
-        }, 600);
-
-        base.pageContent.style.left = 0;
-        base.menuIcon.style.left = "10px";
-
-        base.menuIsOpen = false;
-        base.pageContent.removeEventListener("touchend", base.closeMenu);
-        base.resetTouch();
-    };
-
-    base.finishMenu = function(state) {
-        console.log("Called finishMenu " + state);
-        base.pageContent.className += " smooth";
-        var pos = state ? Math.round(base.windowWidth * 0.8) : 0;
 
         base.pageContent.style.left = pos + "px";
         base.menuIcon.style.left = (pos + 10) + "px";
@@ -68,15 +69,13 @@ var Navigation = function() {
         base.menuIsOpen = state;
 
         if (state) {
-            base.pageContent.addEventListener("click", base.closeMenu);
-            base.pageContent.removeEventListener("touchend", base.openMenu);
-            console.log("If statement: the menu is open");
+            base.pageContent.addEventListener("click", base.finishMenu);
+            base.pageContent.removeEventListener("touchend", base.finishMenu);
         } else {
-            base.pageContent.removeEventListener("touchend", base.closeMenu);
-            console.log("If statement: the menu is closed");
+            base.pageContent.removeEventListener("touchend", base.finishMenu);
         }
 
-        console.log("the menu is " + base.menuIsOpen);
+        base.shouldOpen = base.shouldOpen ? false : true; // changes value to be opposite of what it was.
         base.resetTouch();
     }
 
@@ -98,9 +97,8 @@ var Navigation = function() {
             base.menuIcon.style.left = (base.xCoords[base.xCoords.length - 1] + 10) + "px";
 
             if (!base.menuIsOpen) {
-                base.pageContent.addEventListener("touchend", function() {
-                    return base.finishMenu(true); // only if the menu is currently closed should it stay open
-                }, false);
+                base.shouldOpen = true;
+                base.pageContent.addEventListener("touchend", base.finishMenu); // only if the menu is currently closed should it stay open
                 base.lastTouchPlace = base.xCoords[base.xCoords.length - 1];
             }
         } else if (base.xCoords[base.xCoords.length - 1] <= (base.xCoords[0] - base.hMove) && // If you end up with a lower X then you started:
@@ -108,9 +106,8 @@ var Navigation = function() {
                    base.menuIsOpen) {
             base.pageContent.style.left = base.xCoords[base.xCoords.length - 1] + "px"; // follow the touch move while closing
             base.menuIcon.style.left = (base.xCoords[base.xCoords.length - 1] + 10) + "px";
-            base.pageContent.addEventListener("touchend", function() {
-                return base.finishMenu(false); // when the touch is over, it is safe to close the menu
-            });
+            base.shouldOpen = false;
+            base.pageContent.addEventListener("touchend", base.finishMenu); // when the touch is over, it is safe to close the menu
             base.lastTouchPlace = base.xCoords[base.xCoords.length - 1]; // for use in the sliding operation
         } else {
             base.pageContent.addEventListener("touchend", base.resetTouch);
@@ -182,7 +179,7 @@ var Navigation = function() {
         base.pageContent.addEventListener("touchmove", base.handleTouchMove);
 
         for (var i = 0, j = base.navElements.length; i < j; i++) {
-            base.navElements[i].childNodes[0].addEventListener("click", base.closeMenu, true); // If a link in the menu is tapped, close the menu
+            base.navElements[i].childNodes[0].addEventListener("click", base.finishMenu); // If a link in the menu is tapped, close the menu
         }
     };
 
@@ -204,7 +201,8 @@ var Navigation = function() {
             base.yCoords = [];
             base.touchSmallNav();
             base.lastTouchPlace = 0;
-            base.menuIcon.addEventListener("click", base.openMenu, true);
+            base.shouldOpen = true;
+            base.menuIcon.addEventListener("click", base.finishMenu);
         }
 
 
