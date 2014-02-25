@@ -205,7 +205,9 @@ var Navigation = function() {
             base.menuIcon.addEventListener("click", base.finishMenu);
         }
 
-
+        window.addEventListener("scroll", function() {
+            console.log(window.scrollY);
+        })
     };
 
 };

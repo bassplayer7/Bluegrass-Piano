@@ -22,16 +22,19 @@ var Scrolling = function() {
     };
 
     base.elmYPosition = function(eID) {
-        var elm = document.getElementById(eID).childNodes[1];
-        var y = elm.offsetTop - elm.clientHeight - navigation.navBar.clientHeight; // to compensate for the fixed nav menu
+        var elm = document.getElementById(eID);
+        var y = elm.offsetTop;
+
         console.log("y = " + y);
         console.log("clientHeight = " + navigation.navBar.clientHeight);
-        console.log("offsetTop = " + elm.offsetTop);
+//        console.log("offsetTop = " + elm.offsetTop);
         while (elm.offsetParent && elm.offsetParent !== document.body) {
             console.log("elm = " + elm);
             elm = elm.offsetParent;
             y += elm.offsetTop;
-        } return y;
+        }
+
+        return y - navigation.navBar.clientHeight;
     };
 
     base.smoothScroll = function(evt) {
@@ -59,7 +62,7 @@ var Scrolling = function() {
         if (stopY > startY) {
 //            console.log("StopY is > startY");
             for ( var i = startY; i < stopY; i += step ) {
-                setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
+                setTimeout("window.scroll(0, "+leapY+")", timer * speed);
                 leapY += step;
                 if (leapY > stopY) {
                     leapY = stopY;
@@ -69,7 +72,7 @@ var Scrolling = function() {
             return;
         }
         for ( var j = startY; j > stopY; j -= step ) {
-            setTimeout("window.scrollTo(0, "+leapY+")", timer * speed);
+            setTimeout("window.scroll(0, "+leapY+")", timer * speed);
             leapY -= step;
             if (leapY < stopY) {
                 leapY = stopY;

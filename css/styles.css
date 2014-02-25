@@ -224,7 +224,7 @@ em {
   div.page {
     width: 100%;
     position: relative;
-    overflow: hidden; } }
+    overflow-x: hidden; } }
 
 /* line 10, ../sass/_layouts.scss */
 nav {
@@ -360,7 +360,7 @@ nav {
   @media (max-width: 800px) {
     /* line 120, ../sass/_layouts.scss */
     .content {
-      margin-top: 0.5em;
+      margin: 0;
       padding: 0.5em;
       background-color: white;
       max-width: 100%;
