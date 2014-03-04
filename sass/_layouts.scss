@@ -119,7 +119,7 @@ nav {
 }
 
 .inner {
-  left:0;
+  left:0; // provides nice transition when menu opens/closes
   @include transition(left, linear, .2s);
 }
 

@@ -11,7 +11,6 @@ var Navigation = function() {
         targetSections = [],
         content = $('.inner'),
         menuIcon = $('svg.menu-icon'),
-        positionTop,
         scrollHandling = {
             allow: true,
             reallow: function() {
@@ -48,7 +47,6 @@ var Navigation = function() {
                     return;
                 } else if (positionTop >= targetSections[targetSections.length - 1]) {
                     underline.width( navBar.find('li').eq(targetSections.length - 1).width() ).css('left', navBar.find('li').eq(targetSections.length - 1).position().left);
-                    console.log(positionTop);
                     return;
                 } else if (positionTop >= targetSections[i] && positionTop <= targetSections[i + 1]) {
                     underline.width( navBar.find('li').eq(i).width() ).css('left', navBar.find('li').eq(i).position().left);
