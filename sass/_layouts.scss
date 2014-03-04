@@ -80,6 +80,7 @@ nav {
         @include bp($banjo) {
           color: $small-nav-text-color;
           padding: u(1.2) u(0) u(1.2) u(2.5);
+          display: block;
 
           &:visited,
           &:hover {
