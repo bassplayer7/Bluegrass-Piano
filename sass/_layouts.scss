@@ -16,6 +16,7 @@ nav {
 
   @include bp($banjo) {
     background: $small-nav-bg;
+    height: 100%;
     z-index: 0;
   }
 
@@ -63,13 +64,13 @@ nav {
         &:hover {
           text-decoration: none;
           border-bottom: none;
-        }
 
-        &.active {
-          border-radius: 4px;
-          background-color: $bg-color;
+          @include bp($banjo, $min) {
+            border-radius: 4px;
+            background-color: $bg-color;
 
-          @include transition(all, linear, .2s);
+            @include transition(all, linear, .2s);
+          }
         }
 
         @include bp($guitar) {
@@ -114,6 +115,19 @@ nav {
 
   @include bp($banjo) {
     display: block;
+  }
+}
+
+.inner {
+  left:0;
+  @include transition(left, linear, .2s);
+}
+
+.menu-open {
+  left: 70%;
+
+  @include bp($fiddle) {
+    left:80%;
   }
 }
 

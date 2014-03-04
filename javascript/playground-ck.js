@@ -1,1 +1,0 @@
-var something="weird",Person=function(e){this.gender=e;alert("Person instantiated")},person1=new Person("Male"),person2=new Person("Female");alert("person1 is a "+person1.gender);

@@ -241,13 +241,14 @@ nav {
     /* line 10, ../sass/_layouts.scss */
     nav {
       background: #414141;
+      height: 100%;
       z-index: 0; } }
-  /* line 22, ../sass/_layouts.scss */
+  /* line 23, ../sass/_layouts.scss */
   nav div {
     max-width: 1200px;
     margin: 0 auto;
     text-align: justify; }
-    /* line 27, ../sass/_layouts.scss */
+    /* line 28, ../sass/_layouts.scss */
     nav div span#underline {
       position: absolute;
       bottom: 8px;
@@ -261,66 +262,67 @@ nav {
       -o-transition: linear, 400ms;
       transition: linear, 400ms; }
     @media (max-width: 1200px) {
-      /* line 22, ../sass/_layouts.scss */
+      /* line 23, ../sass/_layouts.scss */
       nav div {
         max-width: 80%; } }
     @media (max-width: 1000px) {
-      /* line 22, ../sass/_layouts.scss */
+      /* line 23, ../sass/_layouts.scss */
       nav div {
         width: 100%;
         max-width: 100%; } }
-  /* line 48, ../sass/_layouts.scss */
+  /* line 49, ../sass/_layouts.scss */
   nav ul {
     width: 100%;
     text-align: justify;
     height: 65px; }
-    /* line 53, ../sass/_layouts.scss */
+    /* line 54, ../sass/_layouts.scss */
     nav ul li {
       display: inline-block;
       list-style: none;
       margin-top: 10px; }
-      /* line 58, ../sass/_layouts.scss */
+      /* line 59, ../sass/_layouts.scss */
       nav ul li a {
         border-bottom: none;
         display: inline-block;
         padding: 10px; }
-        /* line 63, ../sass/_layouts.scss */
+        /* line 64, ../sass/_layouts.scss */
         nav ul li a:hover {
           text-decoration: none;
           border-bottom: none; }
-        /* line 68, ../sass/_layouts.scss */
-        nav ul li a.active {
-          border-radius: 4px;
-          background-color: #e7e7e7;
-          -webkit-transition: all, linear, 0.2s;
-          -moz-transition: all, linear, 0.2s;
-          -o-transition: all, linear, 0.2s;
-          transition: all, linear, 0.2s; }
+          @media (min-width: 800px) {
+            /* line 64, ../sass/_layouts.scss */
+            nav ul li a:hover {
+              border-radius: 4px;
+              background-color: #e7e7e7;
+              -webkit-transition: all, linear, 0.2s;
+              -moz-transition: all, linear, 0.2s;
+              -o-transition: all, linear, 0.2s;
+              transition: all, linear, 0.2s; } }
         @media (max-width: 1000px) {
-          /* line 58, ../sass/_layouts.scss */
+          /* line 59, ../sass/_layouts.scss */
           nav ul li a {
             padding: 4px; } }
         @media (max-width: 800px) {
-          /* line 58, ../sass/_layouts.scss */
+          /* line 59, ../sass/_layouts.scss */
           nav ul li a {
             color: #ededed;
             padding: 12px 0px 12px 25px; }
-            /* line 84, ../sass/_layouts.scss */
+            /* line 85, ../sass/_layouts.scss */
             nav ul li a:visited, nav ul li a:hover {
               color: #ededed; } }
       @media (max-width: 800px) {
-        /* line 53, ../sass/_layouts.scss */
+        /* line 54, ../sass/_layouts.scss */
         nav ul li {
           display: block;
           margin: 0;
           border-bottom: 1px #292929 solid; } }
-    /* line 99, ../sass/_layouts.scss */
+    /* line 100, ../sass/_layouts.scss */
     nav ul:after {
       content: "";
       display: inline-block;
       width: 100%; }
 
-/* line 108, ../sass/_layouts.scss */
+/* line 109, ../sass/_layouts.scss */
 .menu-icon {
   display: none;
   position: absolute;
@@ -328,11 +330,27 @@ nav {
   top: 10px;
   left: 10px; }
   @media (max-width: 800px) {
-    /* line 108, ../sass/_layouts.scss */
+    /* line 109, ../sass/_layouts.scss */
     .menu-icon {
       display: block; } }
 
-/* line 120, ../sass/_layouts.scss */
+/* line 121, ../sass/_layouts.scss */
+.inner {
+  left: 0;
+  -webkit-transition: left, linear, 0.2s;
+  -moz-transition: left, linear, 0.2s;
+  -o-transition: left, linear, 0.2s;
+  transition: left, linear, 0.2s; }
+
+/* line 126, ../sass/_layouts.scss */
+.menu-open {
+  left: 70%; }
+  @media (max-width: 400px) {
+    /* line 126, ../sass/_layouts.scss */
+    .menu-open {
+      left: 80%; } }
+
+/* line 134, ../sass/_layouts.scss */
 .content {
   max-width: 1200px;
   margin: 0 auto 4em;
@@ -344,21 +362,21 @@ nav {
   background-image: -moz-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
   background-image: -o-linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
   background-image: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8)); }
-  /* line 125, ../sass/_layouts.scss */
+  /* line 139, ../sass/_layouts.scss */
   .content.smooth {
     -webkit-transition: all, linear, 0.2s;
     -moz-transition: all, linear, 0.2s;
     -o-transition: all, linear, 0.2s;
     transition: all, linear, 0.2s; }
-  /* line 134, ../sass/_layouts.scss */
+  /* line 148, ../sass/_layouts.scss */
   .content > div {
     margin: 1em 0; }
   @media (max-width: 1200px) {
-    /* line 120, ../sass/_layouts.scss */
+    /* line 134, ../sass/_layouts.scss */
     .content {
       max-width: 80%; } }
   @media (max-width: 800px) {
-    /* line 120, ../sass/_layouts.scss */
+    /* line 134, ../sass/_layouts.scss */
     .content {
       margin: 0;
       padding: 0.5em;
@@ -366,6 +384,6 @@ nav {
       max-width: 100%;
       width: 100%; } }
   @media (max-width: 800px) {
-    /* line 120, ../sass/_layouts.scss */
+    /* line 134, ../sass/_layouts.scss */
     .content {
       position: relative; } }
