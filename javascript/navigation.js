@@ -10,7 +10,15 @@ var Navigation = function() {
         sections = $('.destination'),
         targetSections = [],
         content = $('.inner'),
-        menuIcon = $('svg.menu-icon');
+        menuIcon = $('svg.menu-icon'),
+        positionTop,
+        scrollHandling = {
+            allow: true,
+            reallow: function() {
+                scrollHandling.allow = true;
+            },
+            delay: 100 //(milliseconds) adjust to the highest acceptable value
+        };
 
     // display underline if JS is available and set it to the width of the first nav item
     base.initUnderline = function() {
@@ -30,23 +38,32 @@ var Navigation = function() {
     };
 
     // move underline as the page scrolls
-    base.moveUnderline = function( ) {
-        var positionTop = $( window ).scrollTop();
+    base.moveUnderline = function() {
+        if (scrollHandling.allow){
+            var positionTop = $( window ).scrollTop() + navBar.height();
 
-        for (var i = 0, j = sections.length; i < j; i++) {
-            var currentNav = navBar.find('li').eq(i);
-            if (positionTop < targetSections[1]) {
-                base.initUnderline();
-            } else if (positionTop >= targetSections[i] && positionTop <= targetSections[i + 1]) {
-                underline.width( currentNav.width() ).css('left', currentNav.position().left);
+            for (var i = 0, j = sections.length; i < j; i++) {
+                if (positionTop < targetSections[1]) {
+                    base.initUnderline();
+                    return;
+                } else if (positionTop >= targetSections[targetSections.length - 1]) {
+                    underline.width( navBar.find('li').eq(targetSections.length - 1).width() ).css('left', navBar.find('li').eq(targetSections.length - 1).position().left);
+                    console.log(positionTop);
+                    return;
+                } else if (positionTop >= targetSections[i] && positionTop <= targetSections[i + 1]) {
+                    underline.width( navBar.find('li').eq(i).width() ).css('left', navBar.find('li').eq(i).position().left);
+                    return;
+                }
             }
+
+            scrollHandling.allow = false;
+            setTimeout(scrollHandling.reallow, scrollHandling.delay);
         }
     };
 
     base.smallNav = function() {
         menuIcon.on("click", function() {
             content.toggleClass('menu-open');
-            console.log("SVG clicked");
             base.controlNav();
             return false;
         });
@@ -55,12 +72,11 @@ var Navigation = function() {
             content.removeClass("menu-open");
         });
 
-        content.on( "swiperight", base.handleSwipe );
-        content.on( "swipeleft", base.handleSwipe );
+        content.hammer().on( "swiperight", base.handleSwipe );
+        content.hammer().on( "swipeleft", base.handleSwipe );
     };
 
     base.handleSwipe = function( coords ) {
-        console.log(coords.type);
         if (coords.type === "swiperight") {
             content.addClass('menu-open');
             base.controlNav();
@@ -72,10 +88,8 @@ var Navigation = function() {
 
     base.controlNav = function() {
         if (content.hasClass("menu-open")) {
-            console.log("Determined that the menu is currently open");
             content.on("click", function() {
                 content.removeClass("menu-open");
-                console.log("Class Removed");
                 $(this).off("click"); // remove the click handler so it doesn't fire many times
                 return false;
             });
@@ -83,7 +97,7 @@ var Navigation = function() {
     };
 
     base.load = function() {
-        if ($( window).width() >= 800) {
+        if ($( window ).width() >= 800) {
             base.initUnderline();
             base.setupNavItems();
             $(window).on("resize", base.initUnderline);

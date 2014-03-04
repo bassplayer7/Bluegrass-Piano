@@ -110,7 +110,7 @@ nav {
   display: none;
   position: absolute;
   z-index: 10;
-  top: u();
+  top: u(2);
   left: u();
 
   @include bp($banjo) {

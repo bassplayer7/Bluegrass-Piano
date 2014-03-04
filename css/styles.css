@@ -158,19 +158,27 @@ h1 {
     /* line 63, ../sass/_general.scss */
     h1 {
       margin: 0 auto 0 0.8em; } }
+  @media (max-width: 600px) {
+    /* line 63, ../sass/_general.scss */
+    h1 {
+      font-size: 2.1em; } }
 
-/* line 93, ../sass/_general.scss */
+/* line 97, ../sass/_general.scss */
 h2 {
   font-size: 2.5em;
   text-align: center;
   font-family: 'Raleway', sans-serif;
   font-weight: 100; }
   @media (max-width: 1000px) {
-    /* line 93, ../sass/_general.scss */
+    /* line 97, ../sass/_general.scss */
     h2 {
       font-size: 2.1em; } }
+  @media (max-width: 600px) {
+    /* line 97, ../sass/_general.scss */
+    h2 {
+      font-size: 1.5em; } }
 
-/* line 104, ../sass/_general.scss */
+/* line 112, ../sass/_general.scss */
 h3 {
   font-size: 2em;
   text-align: center;
@@ -178,45 +186,65 @@ h3 {
   font-weight: 100;
   margin: 1.2em 0 0; }
 
-/* line 112, ../sass/_general.scss */
+/* line 120, ../sass/_general.scss */
+h4 {
+  margin: 0.7em 0 0;
+  padding-left: 10px;
+  border-left: 2px #292929 solid; }
+
+/* line 126, ../sass/_general.scss */
 p {
   margin: 0 auto;
   margin-top: 0.8em;
   line-height: 22px; }
 
-/* line 118, ../sass/_general.scss */
+/* line 132, ../sass/_general.scss */
 dl {
   line-height: 22px; }
-  /* line 119, ../sass/_general.scss */
+  /* line 133, ../sass/_general.scss */
   dl dt {
     text-transform: uppercase;
     margin-top: 1em; }
-  /* line 124, ../sass/_general.scss */
+  /* line 138, ../sass/_general.scss */
   dl dd {
     padding-left: 2em; }
 
-/* line 131, ../sass/_general.scss */
+/* line 145, ../sass/_general.scss */
 ul {
   list-style: disc inside none;
   line-height: 22px; }
 
-/* line 136, ../sass/_general.scss */
+/* line 150, ../sass/_general.scss */
 ol {
   list-style: decimal outside none;
-  margin-top: 0.5em;
+  margin: 0.5em 0;
   padding-left: 2em;
   line-height: 22px; }
 
-/* line 143, ../sass/_general.scss */
+/* line 157, ../sass/_general.scss */
 em {
   font-style: italic; }
 
-/* line 147, ../sass/_general.scss */
+/* line 162, ../sass/_general.scss */
 .updated {
   font-size: 0.7em;
   margin-top: 6em;
   color: #A3A3A3;
   display: block; }
+
+/* line 169, ../sass/_general.scss */
+.f-right {
+  float: right;
+  padding: 10px 0 10px 10px; }
+
+/* line 174, ../sass/_general.scss */
+.half {
+  max-width: 50%; }
+
+/* line 178, ../sass/_general.scss */
+.medium {
+  max-width: 50%;
+  max-height: 400px; }
 
 /* ======== Layouts ======== */
 @media (max-width: 800px) {
@@ -327,7 +355,7 @@ nav {
   display: none;
   position: absolute;
   z-index: 10;
-  top: 10px;
+  top: 20px;
   left: 10px; }
   @media (max-width: 800px) {
     /* line 109, ../sass/_layouts.scss */
