@@ -1,7 +1,7 @@
 var navHeight = function() {
     var navBarHeight = 0;
     if ($( window ).width() >= 800) {
-        navBarHeight = $('#navigation').height();
+        navBarHeight = $('#navigation').outerHeight();
     }
     return navBarHeight;
 };
