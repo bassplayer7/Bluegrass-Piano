@@ -37,10 +37,6 @@ nav {
     }
 
     @include bp($bass) {
-      max-width: 80%;
-    }
-
-    @include bp($guitar) {
       width: 100%;
       max-width: 100%;
     }
