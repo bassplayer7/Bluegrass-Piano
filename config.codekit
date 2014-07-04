@@ -94,6 +94,16 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/images\/jesse-maxwell.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 253007,
+		"inputAbbreviatedPath": "\/images\/jesse-maxwell.jpg",
+		"outputAbbreviatedPath": "\/images\/jesse-maxwell.jpg",
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/images\/keyboard-favicon.png": {
 		"fileType": 32768,
 		"ignore": 0,
